@@ -2,7 +2,7 @@ package com.project.rpgstoreback.models;
 
 import java.util.List;
 
-public class Product {
+public abstract class Product {
 
     private Long id;
     private String title;
