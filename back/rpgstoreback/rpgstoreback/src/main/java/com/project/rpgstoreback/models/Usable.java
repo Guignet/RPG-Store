@@ -4,4 +4,7 @@ public class Usable extends Product{
 
     private int durability;
 
+
+
+
 }

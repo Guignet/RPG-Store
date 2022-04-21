@@ -12,4 +12,7 @@ public abstract class Product {
 
     private List<Tag> listTags;
 
+
+
+    
 }

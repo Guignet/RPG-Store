@@ -4,4 +4,5 @@ public class Armor extends Product{
 
     private int resistance;
 
+
 }
