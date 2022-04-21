@@ -9,10 +9,11 @@ public abstract class Product {
     private String description;
     private int quantity;
     private Account seller;
+    private String[] pictures;
 
     private List<Tag> listTags;
 
 
 
-    
+
 }
