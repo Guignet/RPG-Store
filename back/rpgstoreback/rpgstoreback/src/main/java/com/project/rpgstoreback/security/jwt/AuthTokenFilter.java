@@ -1,5 +1,6 @@
 package com.project.rpgstoreback.security.jwt;
 
+import com.project.rpgstoreback.models.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,7 +30,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
             String username = jwtUtils.getUsernameFromToken(tokenJwt);
 
-            User user = (User) userDetailsService.loadUserByUsername(username);
+            Account user = (Account) userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
