@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.metrics.StartupStep;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 import java.util.Arrays;
@@ -31,6 +32,7 @@ public class RpgstorebackApplication {
 			RoleRepository roleRepository) {
 		return new CommandLineRunner() {
 			@Override
+			@Transactional
 			public void run(String... args) throws Exception {
 				Role role1 = new Role(RoleEnum.USER);
 				Role role2 = new Role(RoleEnum.ADMIN);
@@ -85,7 +87,8 @@ public class RpgstorebackApplication {
 				//tagRepository.save(shieldTag);
 				tagRepository.save(gunTag);
 				tagRepository.save(potionTag);
-				//tagRepository.save(instrumentTag);
+				tagRepository.save(instrumentTag);
+				//tagRepository.save(legendaryTag);
 
 				Weapon sword = new Weapon(
 						"Muramasa",
@@ -108,13 +111,27 @@ public class RpgstorebackApplication {
 						50
 				);
 
+//				Usable ring = new Usable(
+//						"Anneau Unique",
+//						"Tu deviens juste invisible mdr",
+//						1,
+//						9999,
+//						admin,
+//						Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png"),
+//						Arrays.asList(legendaryTag),
+//						0
+//				);
+
 				productRepository.save(sword);
 				productRepository.save(shield);
+//				productRepository.save(ring);
 
 				user.addProduct(sword);
 				user.addProduct(shield);
 
 				accountRepository.save(user);// update
+
+				//tagRepository.delete(legendaryTag);
 			}
 		};
 	}

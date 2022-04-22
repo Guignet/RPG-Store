@@ -1,11 +1,15 @@
 package com.project.rpgstoreback.models;
 
+
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 public class Weapon extends Product{
-
+    @NotNull
     private int damage;
 
     public Weapon() {}

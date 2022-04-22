@@ -1,6 +1,9 @@
 package com.project.rpgstoreback.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -10,19 +13,23 @@ public abstract class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotBlank(message ="Il faut un nom au produit")
     private String title;
     private String description;
+    @NotNull
     private int quantity;
+    @NotNull
     private long price;
 
     @ManyToOne
-    @JoinColumn(name = "seller_id")
+    @JoinColumn(name = "creator_id")
     private Account creator; //seller ou admin
 
     @ElementCollection(targetClass=String.class)
+    @NotEmpty(message = "Il faut au moins une image")
     private List<String> pictures;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //cascade = CascadeType.REFRESH
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //cascade = CascadeType.REFRESH
     private List<Tag> listTags;
 
     public Product(){}
@@ -41,9 +48,9 @@ public abstract class Product {
         return id;
     }
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

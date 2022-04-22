@@ -1,6 +1,10 @@
 package com.project.rpgstoreback.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +16,32 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank(message = "Prénom ne peut pas être vide")
     private String firstName;
+
+    @NotBlank(message = "Nom ne peut pas être vide")
     private String lastName;
+
+    @NotBlank(message = "Pseudo ne peut pas être vide")
+    @Column(unique = true)
     private String username;
+
+    @NotBlank(message = "Mot de passe ne peut pas être vide")
+    @Size(min = 4, message = "Mot de passe trop court")
     private String password;
+
+    @Column(unique = true)
+    @NotBlank(message = "Email ne peut pas être vide")
     private String email;
+
+    @NotNull//verif
     private LocalDate registrationDate;
+
     private boolean isActive;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @NotEmpty(message = "Le role ne peut pas être vide")
+    @ManyToMany(fetch = FetchType.LAZY)
     private List<Role> roleList;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -44,9 +65,9 @@ public class Account {
         return id;
     }
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;

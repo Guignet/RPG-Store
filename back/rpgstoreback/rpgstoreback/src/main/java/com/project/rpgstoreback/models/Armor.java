@@ -1,11 +1,16 @@
 package com.project.rpgstoreback.models;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 public class Armor extends Product{
-
+    @NotNull
     private int resistance;
 
     public Armor() {}

@@ -1,6 +1,9 @@
 package com.project.rpgstoreback.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Role {
@@ -22,9 +25,9 @@ public class Role {
         return id;
     }
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public RoleEnum getName() {
         return name;
