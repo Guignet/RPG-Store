@@ -59,7 +59,7 @@ public class AuthController {
         String tokenJwtGenerated = jwtUtils.generateJwtToken(authentication);
 
         Account user = (Account) authentication.getPrincipal();
-
+        System.out.println("ici le token " + tokenJwtGenerated);
         return ResponseEntity
                 .ok(new JwtResponse(
                         user.getId(),

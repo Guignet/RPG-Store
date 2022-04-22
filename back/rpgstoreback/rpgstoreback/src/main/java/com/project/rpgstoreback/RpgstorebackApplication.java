@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 
@@ -23,7 +24,7 @@ public class RpgstorebackApplication {
 	}
 
 	@Bean
-	CommandLineRunner commandLineRunner(AccountRepository accountRepository, RoleRepository roleRepository) {
+	CommandLineRunner commandLineRunner(AccountRepository accountRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
 		return new CommandLineRunner() {
 			@Override
 			public void run(String... args) throws Exception {
@@ -39,7 +40,7 @@ public class RpgstorebackApplication {
 						"firstAdmin",
 						"lastAdmin",
 						"admin",
-						"admin",
+						passwordEncoder.encode("admin") ,
 						"admin@gmail.com",
 						LocalDate.now(),
 						true,
