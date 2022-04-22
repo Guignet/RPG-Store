@@ -9,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.metrics.StartupStep;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.transaction.Transactional;
@@ -26,6 +25,7 @@ public class RpgstorebackApplication {
 	}
 
 	@Bean
+
 	CommandLineRunner commandLineRunner(
 			AccountRepository accountRepository,
 			TagRepository tagRepository,
@@ -33,7 +33,7 @@ public class RpgstorebackApplication {
 			RoleRepository roleRepository,
 			PasswordEncoder encoder
 			) {
-		return new CommandLineRunner() {
+    return new CommandLineRunner() {
 			@Override
 			@Transactional
 			public void run(String... args) throws Exception {

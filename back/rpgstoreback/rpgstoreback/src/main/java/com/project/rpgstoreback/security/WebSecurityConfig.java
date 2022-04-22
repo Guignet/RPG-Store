@@ -3,6 +3,7 @@ package com.project.rpgstoreback.security;
 import com.project.rpgstoreback.security.jwt.AuthEntryPointJwt;
 import com.project.rpgstoreback.security.jwt.AuthTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,9 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 public class WebSecurityConfig {
-
+    @Qualifier("UserDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
