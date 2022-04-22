@@ -42,9 +42,9 @@ public class Account {
 
     @NotEmpty(message = "Le role ne peut pas être vide")
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Role> roleList;
+    private List<Role> roleList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name="panierUser")
     private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 

@@ -74,7 +74,7 @@ public class RpgstorebackApplication {
 				);
 				accountRepository.save(admin);
 				accountRepository.save(seller);
-				accountRepository.save(user);
+				accountRepository.save(user); // pass en manage => si modifié ajouté dans le save (transactionnal)
 
 				Tag swordTag = new Tag("sword","Longue arme blanche");
 				Tag shieldTag = new Tag("shield","Une défense en plus");
@@ -111,27 +111,25 @@ public class RpgstorebackApplication {
 						50
 				);
 
-//				Usable ring = new Usable(
-//						"Anneau Unique",
-//						"Tu deviens juste invisible mdr",
-//						1,
-//						9999,
-//						admin,
-//						Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png"),
-//						Arrays.asList(legendaryTag),
-//						0
-//				);
+				Usable ring = new Usable(
+						"Anneau Unique",
+						"Tu deviens juste invisible mdr",
+						1,
+						9999,
+						admin,
+						Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png"),
+						Arrays.asList(legendaryTag),
+						0
+				);
 
 				productRepository.save(sword);
 				productRepository.save(shield);
-//				productRepository.save(ring);
+				productRepository.save(ring);
 
-				user.addProduct(sword);
-				user.addProduct(shield);
+				user.addProduct(sword); // update via premier save (dans état manage)
+				user.addProduct(shield); // update via premier save (dans état manage)
 
-				accountRepository.save(user);// update
-
-				//tagRepository.delete(legendaryTag);
+				tagRepository.delete(legendaryTag.getId());
 			}
 		};
 	}

@@ -1,10 +1,9 @@
 package com.project.rpgstoreback.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Tag {
@@ -15,6 +14,9 @@ public class Tag {
     @NotBlank
     private String name;
     private String description;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listTags")
+    private List<Product> listProducts = new ArrayList<>();
 
     public Tag(){}
 
@@ -45,5 +47,13 @@ public class Tag {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Product> getListProducts() {
+        return listProducts;
+    }
+
+    public void setListProducts(List<Product> listProducts) {
+        this.listProducts = listProducts;
     }
 }
