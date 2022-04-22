@@ -5,7 +5,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,18 +22,37 @@ public class Account implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank(message = "Prénom ne peut pas être vide")
     private String firstName;
+
+    @NotBlank(message = "Nom ne peut pas être vide")
     private String lastName;
+
+    @NotBlank(message = "Pseudo ne peut pas être vide")
+    @Column(unique = true)
     private String username;
+
+    @NotBlank(message = "Mot de passe ne peut pas être vide")
+    @Size(min = 4, message = "Mot de passe trop court")
     private String password;
+
+    @Column(unique = true)
+    @NotBlank(message = "Email ne peut pas être vide")
     private String email;
+
+    @NotNull//verif
     private LocalDate registrationDate;
+
     private boolean isActive;
 
-    @ManyToMany(fetch = FetchType.EAGER)//earger va cherche toute info de user + info des role associé
-    private List<Role> roleList;
+    @NotEmpty(message = "Le role ne peut pas être vide")
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Role> roleList = new ArrayList<>();
 
-    //private List<Product> listProducts;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name="panierUser")
+    private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 
     public Account(){}
 
@@ -71,35 +95,8 @@ public class Account implements UserDetails {
         return username;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roleList.stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
     }
 
     public String getPassword() {
@@ -141,4 +138,44 @@ public class Account implements UserDetails {
     public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
+
+    public List<Product> getListProducts() {
+        return listProducts;
+    }
+
+    public void setListProducts(List<Product> listProducts) {
+        this.listProducts = listProducts;
+    }
+
+    public void addProduct(Product product){
+        this.listProducts.add(product);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roleList.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+    }
+
 }
