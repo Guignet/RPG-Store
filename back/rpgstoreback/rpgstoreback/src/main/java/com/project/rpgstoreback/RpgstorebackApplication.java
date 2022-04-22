@@ -129,7 +129,7 @@ public class RpgstorebackApplication {
 				user.addProduct(sword); // update via premier save (dans état manage)
 				user.addProduct(shield); // update via premier save (dans état manage)
 
-				tagRepository.delete(legendaryTag.getId());
+				//tagRepository.delete(legendaryTag.getId());
 			}
 		};
 	}
