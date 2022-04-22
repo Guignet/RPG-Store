@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0 50px;
+
+
+
+  /*background-image: url(../img/bricks_darker.png);*/
+}
+
+div.container {
+  display: flex;
+  flex-flow: column wrap;
+
+  margin: 0 50px;
+}
+
+.entete {
+
+  /* background-attachment: fixed;*/
+  /*background-position: 75% 600%;*/
+  /*background-color: aqua;*/
+  background: url(/src/assets/img/dali.jpg) 75% 55%;
+  background-size: cover;
+}
+
+header {
+
+  font-family: 'Fredoka', sans-serif;
+  height: 200px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%); */
+}
+
+
+header img {
+  height: 150px;
+  object-fit: contain;
+  z-index: -1;
+}
+
+header h1 {
+  /* margin-left: 3em; */
+
+  font-size: 5em;
+  font-weight: 800;
+
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #FFF;
+
+  background: linear-gradient(to right, #EB3349 0%, #F45C43  51%, #EB3349  100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 5px 5px #F45C43;
+
+  z-index: 1000;
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #EB3349 0%, #F45C43  51%, #EB3349  100%)}
+.btn-grad {
+  /* margin: 5px;
+  padding: 15px 45px; */
+  /* text-align: center; */
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white !important;
+  /* box-shadow: 0 0 20px #eee; */
+  border-radius: 10px;
+  border: 3px solid white;
+  /* display: block; */
+}
+
+.btn-grad:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
+.tilt {
+  position: absolute;
+  transform: rotate(-5deg);
+}
