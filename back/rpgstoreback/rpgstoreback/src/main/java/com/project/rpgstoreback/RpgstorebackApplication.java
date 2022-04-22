@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.metrics.StartupStep;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -29,7 +30,9 @@ public class RpgstorebackApplication {
 			AccountRepository accountRepository,
 			TagRepository tagRepository,
 			ProductRepository productRepository,
-			RoleRepository roleRepository) {
+			RoleRepository roleRepository,
+			PasswordEncoder encoder
+			) {
 		return new CommandLineRunner() {
 			@Override
 			@Transactional
@@ -45,7 +48,7 @@ public class RpgstorebackApplication {
 						"firstAdmin",
 						"lastAdmin",
 						"admin",
-						"admin",
+						encoder.encode("admin"),
 						"admin@gmail.com",
 						LocalDate.now(),
 						true,
@@ -56,7 +59,7 @@ public class RpgstorebackApplication {
 						"firstSeller",
 						"lastSeller",
 						"seller",
-						"seller",
+						encoder.encode("seller"),
 						"seller@gmail.com",
 						LocalDate.now(),
 						true,
@@ -66,7 +69,7 @@ public class RpgstorebackApplication {
 						"firstUser",
 						"lastUser",
 						"user",
-						"user",
+						encoder.encode("user"),
 						"user@gmail.com",
 						LocalDate.now(),
 						true,
