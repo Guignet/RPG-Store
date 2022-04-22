@@ -81,18 +81,17 @@ public class RpgstorebackApplication {
 				Tag instrumentTag = new Tag("instrument","De la musique en combat ? Quelle idée ...");
 				Tag legendaryTag = new Tag("légendaire","Un object d'une rareté inouï");
 
-				tagRepository.save(swordTag);
-				tagRepository.save(shieldTag);
+				//tagRepository.save(swordTag);
+				//tagRepository.save(shieldTag);
 				tagRepository.save(gunTag);
 				tagRepository.save(potionTag);
-				tagRepository.save(instrumentTag);
-
-//    public Product(String title, String description, int quantity, Account seller, List<String> pictures, List< Tag > listTags) {
+				//tagRepository.save(instrumentTag);
 
 				Weapon sword = new Weapon(
 						"Muramasa",
 						"j'aime les sabres",
 						1,
+						5000,
 						seller,
 						Arrays.asList("https://soranews24.com/wp-content/uploads/sites/3/2021/10/TR-12.jpeg?w=640"),
 						Arrays.asList(swordTag,legendaryTag),
@@ -102,6 +101,7 @@ public class RpgstorebackApplication {
 						"Bouclier de Midas",
 						"bouclier d'un avare",
 						1,
+						300,
 						seller,
 						Arrays.asList("https://c8.alamy.com/compfr/ay8yy6/historique-irlandais-bouclier-d-or-de-l-age-du-bronze-ay8yy6.jpg"),
 						Arrays.asList(shieldTag),
@@ -110,7 +110,6 @@ public class RpgstorebackApplication {
 
 				productRepository.save(sword);
 				productRepository.save(shield);
-
 
 				user.addProduct(sword);
 				user.addProduct(shield);
