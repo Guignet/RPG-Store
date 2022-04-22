@@ -10,8 +10,8 @@ public class Usable extends Product{
 
     public Usable() {}
 
-    public Usable(String title, String description, int quantity, Account seller, List<String> pictures, List<Tag> listTags, int durability) {
-        super(title, description, quantity, seller, pictures, listTags);
+    public Usable(String title, String description, int quantity, long price, Account seller, List<String> pictures, List<Tag> listTags, int durability) {
+        super(title, description, quantity, price, seller, pictures, listTags);
         this.durability = durability;
     }
 

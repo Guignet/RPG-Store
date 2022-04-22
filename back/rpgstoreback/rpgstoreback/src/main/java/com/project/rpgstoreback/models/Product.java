@@ -1,8 +1,6 @@
 package com.project.rpgstoreback.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -15,22 +13,25 @@ public abstract class Product {
     private String title;
     private String description;
     private int quantity;
+    private long price;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private Account creator; //seller ou admin
 
+    @ElementCollection(targetClass=String.class)
     private List<String> pictures;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //cascade = CascadeType.REFRESH
     private List<Tag> listTags;
 
     public Product(){}
 
-    public Product(String title, String description, int quantity, Account seller, List<String> pictures, List<Tag> listTags) {
+    public Product(String title, String description, int quantity, long price, Account seller, List<String> pictures, List<Tag> listTags) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
+        this.price = price;
         this.creator = seller;
         this.pictures = pictures;
         this.listTags = listTags;
@@ -40,9 +41,9 @@ public abstract class Product {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getTitle() {
         return title;
@@ -66,6 +67,14 @@ public abstract class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 
     public Account getCreator() {

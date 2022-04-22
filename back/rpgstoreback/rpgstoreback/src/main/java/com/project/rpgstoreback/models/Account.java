@@ -2,6 +2,7 @@ package com.project.rpgstoreback.models;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,8 +23,9 @@ public class Account {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roleList;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<Product> listProducts; // liste panier pour user
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name="panierUser")
+    private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 
     public Account(){}
 
@@ -42,9 +44,9 @@ public class Account {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     public String getFirstName() {
         return firstName;
