@@ -1,0 +1,201 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Coeur de vie",
+            "description": "Permet de restorer sa vie au cours d'un combat.",
+            "quantity": 100,
+            "price": 10,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://i.pinimg.com/originals/76/b5/73/76b573e3051fe6e7eacc6e870801216e.jpg"
+            ],
+            "tags": [
+                {
+                    "id": 1,
+                    "title": "Soin / Healing",
+                    "description": "Section dédiée aux soins pour les combats ou hors combat"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "1/4 de coeur",
+            "description": "Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",
+            "quantity": 100,
+            "price": 25,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"
+            ],
+            "tags": [
+                {
+                    "id": 1,
+                    "title": "Soin / Healing",
+                    "description": "Section dédiée aux soins pour les combats"
+                },
+                {
+                    "id": 2,
+                    "title": "Amélioration / Upgrade",
+                    "description": "Section dédiée aux améliorations de stats"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "Emeraude Kokiri",
+            "description": "La pierre spirituelle de la forêt, également connue sous le nom d' 'Emeraude Kokiri', est un objet d'Ocarina of Time.",
+            "quantity": 1,
+            "price": 1000,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.pngkey.com/png/detail/219-2195910_emerald-clipart-emerald-stone-emeraude-kokiri.png"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Rubis Goron",
+            "description": "La pierre spirituelle de feu, également connue sous le nom de 'Rubis Goron', est un objet d'Ocarina of Time.",
+            "quantity": 1,
+            "price": 1000,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.kindpng.com/picc/m/407-4079961_gorons-ruby-hd-png-download.png"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "Saphir Zora",
+            "description": "La pierre spirituelle de l'eau, également connue sous le nom de 'bague de fiançailles Zora' et 'Saphir Zora', est un objet d'Ocarina of Time.",
+            "quantity": 1,
+            "price": 1000,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.pikpng.com/pngl/m/403-4039890_one-of-the-three-spiritual-stones-link-must.png"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Master Sword",
+            "description": "L'épée maîtresse, également connue sous le nom de lame du fléau du mal, l'épée légendaire, l'épée de légende, l'épée maîtresse de la résurrection, l'épée qui scelle les ténèbres et l'épée sacrée, est une épée légendaire récurrente dans la légende de Série Zelda.",
+            "quantity": 0,
+            "price": 10000,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.ubuy.bj/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNTEteFpvc3JMRUwuX0FDX1NMMTAwMF8uanBn.jpg"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 4,
+                    "title": "Arme / Weapon",
+                    "description": "Section dédiée aux armes"
+                },
+                {
+                    "id": 5,
+                    "title": "Epée / Sword",
+                    "description": "Section dédiée aux épées"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Clef du Boss",
+            "description": "Nightmare Keys, également connues sous le nom de Big Keys, Boss Room Keys et Boss Keys, sont des éléments récurrents de la série The Legend of Zelda.",
+            "quantity": 50,
+            "price": 500,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.puissance-zelda.com/img/jeux/oot/artworks/165.png"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 6,
+                    "title": "Utile / Util",
+                    "description": "Section dédiée aux objets utiles"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Epée Biggoron",
+            "description": "L'épée de Biggoron est un objet récurrent de la série The Legend of Zelda. L'épée de Biggoron est une version beaucoup plus robuste du couteau du géant, que Biggoron a fabriqué et est une épée très puissante.",
+            "quantity": 1,
+            "price": 8000,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.supersoluce.com/sites/default/files/logo1/biggoron_sword_by_blueamnesiac-d4pci6n.png"
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 4,
+                    "title": "Arme / Weapon",
+                    "description": "Section dédiée aux armes"
+                },
+                {
+                    "id": 5,
+                    "title": "Epée / Sword",
+                    "description": "Section dédiée aux épées"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Bouteille vide",
+            "description": "Les bouteilles vides sont des objets utilisés pour stocker une variété d'autres objets, tels que des potions, des fées et des insectes, pour une utilisation ultérieure. Une capacité récurrente de ces bouteilles est qu'une fée en bouteille sera automatiquement libérée si vous tombez au combat, vous faisant revivre et restaurant une partie de votre vie.",
+            "quantity": 1000,
+            "price": 3,
+            "seller": "Marchand d'Hyrule",
+            "pictures": [
+                "https://www.pngitem.com/pimgs/m/182-1827376_download-zip-archive-bottle-of-water-zelda-hd.png"
+            ],
+            "tags": [
+                {
+                    "id": 7,
+                    "title": "Commun / Common",
+                    "description": "Section dédiée aux objets communs et faciles à trouver"
+                },
+                {
+                    "id": 6,
+                    "title": "Utile / Util",
+                    "description": "Section dédiée aux objets utiles"
+                }
+            ]
+        }
+    ]
+}

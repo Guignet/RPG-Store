@@ -1,14 +1,42 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NgbCarousel, NgbSlideEvent, NgbSlideEventSource} from "@ng-bootstrap/ng-bootstrap";
+import {Product} from "../../models/product";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
+export class ProductComponent implements OnInit {
 
-export class AppComponent {
-  title = 'rpgstorefront';
+  @Input("productParam")
+  product! : Product;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  open(){
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // code component pour le caroussel
   paused = false;
@@ -37,4 +65,5 @@ export class AppComponent {
       this.togglePaused();
     }
   }
+
 }

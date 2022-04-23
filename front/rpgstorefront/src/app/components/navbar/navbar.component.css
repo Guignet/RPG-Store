@@ -3,10 +3,11 @@
 body {
   margin: 0;
   padding: 0 50px;
-
-
-
   /*background-image: url(../img/bricks_darker.png);*/
+}
+
+a {
+  text-decoration: none;
 }
 
 div.container {
