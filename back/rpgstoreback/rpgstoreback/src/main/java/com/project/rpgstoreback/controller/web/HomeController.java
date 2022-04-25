@@ -11,7 +11,7 @@ public class HomeController {
     }
     @GetMapping(path = {"/hello"})
     public String hello(){
-        return "hello";
+        return "hello.html";
     }
 
 }

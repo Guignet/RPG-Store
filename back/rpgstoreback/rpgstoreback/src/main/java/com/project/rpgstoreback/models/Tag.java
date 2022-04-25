@@ -15,7 +15,7 @@ public class Tag {
     private String name;
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "listTags")
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "listTags")
     private List<Product> listProducts = new ArrayList<>();
 
     public Tag(){}

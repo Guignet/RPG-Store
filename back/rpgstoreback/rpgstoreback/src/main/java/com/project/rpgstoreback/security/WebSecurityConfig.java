@@ -70,7 +70,8 @@ public class WebSecurityConfig {
                     .authorizeRequests()
                     .antMatchers("/api/auth/**").permitAll()
                     .antMatchers("/signin").permitAll()
-                    .anyRequest().authenticated();
+//                    .anyRequest().authenticated()
+            ;
 
             http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         }

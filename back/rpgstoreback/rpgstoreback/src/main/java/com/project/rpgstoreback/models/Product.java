@@ -21,9 +21,9 @@ public abstract class Product {
     @NotNull
     private long price;
 
-    @ManyToOne
-    @JoinColumn(name = "creator_id")
-    private Account creator; //seller ou admin
+
+    @Column(name = "creator_id")
+    private Long creator; //seller ou admin
 
     @ElementCollection(targetClass=String.class)
     @NotEmpty(message = "Il faut au moins une image")
@@ -39,7 +39,7 @@ public abstract class Product {
 
     public Product(){}
 
-    public Product(String title, String description, int quantity, long price, Account seller, List<String> pictures, List<Tag> listTags) {
+    public Product(String title, String description, int quantity, long price, Long seller, List<String> pictures, List<Tag> listTags) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
@@ -89,11 +89,11 @@ public abstract class Product {
         this.price = price;
     }
 
-    public Account getCreator() {
+    public Long getCreator() {
         return creator;
     }
 
-    public void setCreator(Account creator) {
+    public void setCreator(Long creator) {
         this.creator = creator;
     }
 
