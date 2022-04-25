@@ -1,17 +1,13 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
+import com.project.rpgstoreback.models.Product;
 import com.project.rpgstoreback.models.Role;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateAccount {
+public class ResponseAccountDTO {
 
     private Long id;
     private String firstName;
@@ -21,11 +17,12 @@ public class CreateAccount {
     private String email;
     private LocalDate registrationDate;
     private boolean isActive;
-    private List<Long> roleList = new ArrayList<>(); // id des roles
+    private List<Role> roleList = new ArrayList<>();
+    private List<ResponseProductDTO> listProduct = new ArrayList<>();
 
-    public CreateAccount(){}
+    public ResponseAccountDTO(){}
 
-    public CreateAccount(Long id, String firstName, String lastName, String username, String password, String email, LocalDate registrationDate, boolean isActive, List<Long> roleList) {
+    public ResponseAccountDTO(Long id, String firstName, String lastName, String username, String password, String email, LocalDate registrationDate, boolean isActive, List<Role> roleList,  List<ResponseProductDTO> listProduct) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,6 +32,7 @@ public class CreateAccount {
         this.registrationDate = registrationDate;
         this.isActive = isActive;
         this.roleList = roleList;
+        this.listProduct = listProduct;
     }
 
     public Long getId() {
@@ -101,11 +99,24 @@ public class CreateAccount {
         isActive = active;
     }
 
-    public List<Long> getRoleList() {
+    public List<Role> getRoleList() {
         return roleList;
     }
 
-    public void setRoleList(List<Long> roleList) {
+    public void setRoleList(List<Role> roleList) {
         this.roleList = roleList;
     }
+
+    public List<ResponseProductDTO> getListProduct() {
+        return listProduct;
+    }
+
+    public void setListProduct(List<ResponseProductDTO> listProduct) {
+        this.listProduct = listProduct;
+    }
+
+    public void addProduct(ResponseProductDTO product){
+        this.listProduct.add(product);
+    }
+
 }
