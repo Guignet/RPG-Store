@@ -47,7 +47,7 @@ public class Account implements UserDetails {
     private boolean isActive;
 
     @NotEmpty(message = "Le role ne peut pas être vide")
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roleList = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

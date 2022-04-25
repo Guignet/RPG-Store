@@ -29,7 +29,7 @@ public abstract class Product {
     @NotEmpty(message = "Il faut au moins une image")
     private List<String> pictures;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) //, mappedBy = "listProducts"
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //, mappedBy = "listProducts"
     @JoinTable(
             name = "tag_associate",
             joinColumns = @JoinColumn(name="product_id"),
