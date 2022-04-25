@@ -8,7 +8,7 @@
 
       <!--      Mettre un onclick et agrandir l'image-->
       <!--      <a href="#" class="pop">-->
-      <div style="height: 200px;" class="picsum-img-wrapper">
+      <div style="height: 200px;background: #F6F6F6" class="picsum-img-wrapper">
         <img  [src]="img" alt="My image {{i + 1}} description">
       </div>
       <!--      </a>-->
@@ -20,47 +20,68 @@
 
   <div class="card-body">
 
-    <h5 class="card-title">
+    <h5 class="card-title text-center ">
       <span *ngIf="product.title; else na">
         {{product.title}}
       </span>
     </h5>
 
-    <p class="card-text">Vendu par :
-      <span *ngIf="product.seller; else na">
-        {{product.seller}}
+
+
+
+    <h5 class="card-title d-flex justify-content-center">
+      <span *ngIf="product.price; else na">
+        {{product.price | currency: '€':'symbol':'1.0-2'}}
       </span>
-    </p>
-
-
-
-    <button  class="btn btn-success col-12" (click)="open()">Voir plus</button>
-
-
+    </h5>
 
     <p class="card-text d-flex justify-content-center">
       <ng-container [ngSwitch]="true">
-        <span *ngSwitchCase="product.quantity === 1" class="stock-rare">Stock : {{product.quantity}}</span>
+        <span *ngSwitchCase="product.quantity === 1" class="stock-rare">Stock : objet unique</span>
         <span *ngSwitchCase="product.quantity === 0" class="stock-non-disponible">Stock : non disponible</span>
         <span *ngSwitchDefault class="stock-normal">Stock : {{product.quantity}}</span>
       </ng-container>
     </p>
 
 
-    <h5 class="card-title d-flex justify-content-center">Prix :
-      <span *ngIf="product.price; else na">
-        {{product.price | currency: '€':'symbol':'1.0-2'}}
-      </span>
-    </h5>
+
+
+
 
 
 
 <!-- Faire un addToCart() -->
-    <button class="btn btn-primary col-12">Ajouter au panier</button>
+    <button class="btn btn-primary col-12 mb-1">Ajouter au panier</button>
+
+    <button  class="btn btn-success success col-12 mb-1" (click)="open()">Voir plus</button>
+
+    <p class="card-text seller">Vendu par :
+      <a *ngIf="product.seller; else na">
+        {{product.seller}}
+      </a>
+    </p>
 
 
+
+    <div class="mt-2 d-flex flex-row flex-wrap justify-content-center align-items-center">
+      <div *ngFor="let tag of product.tags;">
+        <a class="tag m-1" *ngIf="tag.title; else na">
+          {{tag.title}}
+        </a>
+      </div>
+
+<!--      <div class="m-3" *ngFor="let tag of listTags|nameOrder:sortByName">-->
+
+<!--        <app-tag [tagParam]="tag" ></app-tag>-->
+
+<!--        <ng-template #na>Non renseigné</ng-template>-->
+
+<!--      </div>-->
+    </div>
 
   </div>
+
+
 
 </div>
 

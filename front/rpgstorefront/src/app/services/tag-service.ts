@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Product} from "../models/product";
+import {Tag} from "../models/tag";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class TagService {
 
   private BASE_URL = "http://localhost:3000";
 
@@ -19,9 +19,7 @@ export class ProductService {
 
   constructor(private http : HttpClient) { }
 
-  fetchAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.BASE_URL}/products`);
+  fetchAll(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`${this.BASE_URL}/tags`);
   }
-
-
 }

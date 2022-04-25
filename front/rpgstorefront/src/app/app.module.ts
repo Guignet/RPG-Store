@@ -11,7 +11,10 @@ import { SeeProductsComponent } from './components/see-products/see-products.com
 import { PriceOrderPipe } from './pipes/price-order.pipe';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { ModalConfigComponent } from './components/modal-config/modal-config.component';
+import { TagComponent } from './components/tag/tag.component';
+import { SeeTagsComponent } from './components/see-tags/see-tags.component';
+import { NameOrderPipe } from './pipes/name-order.pipe';
+// import { ModalConfigComponent } from './components/modal-config/modal-config.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { ModalConfigComponent } from './components/modal-config/modal-config.com
     ProductComponent,
     SeeProductsComponent,
     PriceOrderPipe,
-    ModalConfigComponent
+    TagComponent,
+    SeeTagsComponent,
+    NameOrderPipe
   ],
   imports: [
     BrowserModule,

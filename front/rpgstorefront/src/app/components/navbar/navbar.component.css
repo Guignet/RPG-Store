@@ -64,7 +64,10 @@ header h1 {
 }
 
 
-.btn-grad {background-image: linear-gradient(to right, #EB3349 0%, #F45C43  51%, #EB3349  100%)}
+.btn-grad {
+  background-image: linear-gradient(to right, #EB3349 0%, #F45C43  51%, #EB3349  100%)
+}
+
 .btn-grad {
   /* margin: 5px;
   padding: 15px 45px; */
