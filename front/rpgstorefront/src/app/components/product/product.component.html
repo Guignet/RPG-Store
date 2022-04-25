@@ -53,9 +53,11 @@
 <!-- Faire un addToCart() -->
     <button class="btn btn-primary col-12 mb-1">Ajouter au panier</button>
 
-    <button  class="btn btn-success success col-12 mb-1" (click)="open()">Voir plus</button>
 
-    <p class="card-text seller">Vendu par :
+    <a href="/product-details/{{product.id}}" class="btn btn-success success col-12 mb-1">Voir plus</a>
+
+
+    <p class="card-text span">Vendu par :
       <a *ngIf="product.seller; else na">
         {{product.seller}}
       </a>

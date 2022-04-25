@@ -113,12 +113,57 @@
                 },
                 {
                     "id": 4,
-                    "title": "Arme / Weapon",
+                    "title": "Arme",
                     "description": "Section dédiée aux armes"
                 },
                 {
                     "id": 5,
-                    "title": "Epée / Sword",
+                    "title": "Epée",
+                    "description": "Section dédiée aux épées"
+                },
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 4,
+                    "title": "Weapon",
+                    "description": "Section dédiée aux armes"
+                },
+                {
+                    "id": 5,
+                    "title": "Sword",
+                    "description": "Section dédiée aux épées"
+                },
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 4,
+                    "title": "Arme",
+                    "description": "Section dédiée aux armes"
+                },
+                {
+                    "id": 5,
+                    "title": "Epée",
+                    "description": "Section dédiée aux épées"
+                },
+                {
+                    "id": 3,
+                    "title": "Rare",
+                    "description": "Section dédiée aux objets uniques et rares à trouver"
+                },
+                {
+                    "id": 4,
+                    "title": "Weapon",
+                    "description": "Section dédiée aux armes"
+                },
+                {
+                    "id": 5,
+                    "title": "Sword",
                     "description": "Section dédiée aux épées"
                 }
             ]
