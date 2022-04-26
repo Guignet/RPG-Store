@@ -8,13 +8,12 @@ import com.project.rpgstoreback.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController("UsableRestController")
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products/usables")
 public class UsableController {
@@ -145,7 +144,7 @@ public class UsableController {
         //SET TAG PRODUCT
         List<TagDTO> taglist = new ArrayList<>();
         product.getListTags().forEach(
-                t -> taglist.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
+                t -> taglist.add(new TagDTO(t.getId(),t.getTitle(),t.getDescription()))
         );
         prodDto.setListTags(taglist);
 
@@ -186,7 +185,7 @@ public class UsableController {
 
         List<TagDTO> tags = new ArrayList<>();
         usable.getListTags().forEach(
-                t -> tags.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
+                t -> tags.add(new TagDTO(t.getId(),t.getTitle(),t.getDescription()))
         );
         dto.setListTags(tags);
 

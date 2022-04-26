@@ -1,22 +1,18 @@
 package com.project.rpgstoreback.controller.rest;
 
 import com.project.rpgstoreback.controller.rest.modelDTO.*;
-import com.project.rpgstoreback.models.Account;
-import com.project.rpgstoreback.models.Armor;
 import com.project.rpgstoreback.models.Tag;
 import com.project.rpgstoreback.repository.ProductRepository;
 import com.project.rpgstoreback.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@RestController
+@RestController("TagRestController")
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/tags")
 public class TagController {
@@ -35,7 +31,7 @@ public class TagController {
                 tag -> {
                     response.add(new TagDTO(
                             tag.getId(),
-                            tag.getName(),
+                            tag.getTitle(),
                             tag.getDescription()
                     ));
                 }
@@ -52,7 +48,7 @@ public class TagController {
 
         ResponseTagDTO response = new ResponseTagDTO(
                 tag.getId(),
-                tag.getName(),
+                tag.getTitle(),
                 tag.getDescription()
         );
 
@@ -68,7 +64,7 @@ public class TagController {
 
         Tag newTag = new Tag();
 
-        newTag.setName(dto.getName());
+        newTag.setTitle(dto.getTitle());
         newTag.setDescription(dto.getDescription());
 
         this.tagRepository.save(newTag);
@@ -82,7 +78,7 @@ public class TagController {
         Tag newTag =  this.tagRepository.findById(dto.getId()).orElseThrow(() -> new UsernameNotFoundException("Tag not found"));
         // SANS LIST PROD
         newTag.setId(dto.getId());
-        newTag.setName(dto.getName());
+        newTag.setTitle(dto.getTitle());
         newTag.setDescription(dto.getDescription());
 
         this.tagRepository.save(newTag);
@@ -109,7 +105,7 @@ public class TagController {
 
         return ResponseEntity
                 .ok()
-                .body("Tag: " + deleteTag.getName() + ", à été supprimé");
+                .body("Tag: " + deleteTag.getTitle() + ", à été supprimé");
     }
 
     public List<ResponseTagProductDTO> productsWithTag(Long idTag){

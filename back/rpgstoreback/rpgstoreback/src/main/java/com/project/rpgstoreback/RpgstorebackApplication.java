@@ -100,7 +100,7 @@ public class RpgstorebackApplication {
 						"j'aime les sabres",
 						1,
 						5000,
-						seller.getId(),
+						seller,
 						Arrays.asList("https://soranews24.com/wp-content/uploads/sites/3/2021/10/TR-12.jpeg?w=640"),
 						Arrays.asList(swordTag,legendaryTag),
 						120
@@ -113,7 +113,7 @@ public class RpgstorebackApplication {
 						"bouclier d'un avare",
 						1,
 						300,
-						seller.getId(),
+						seller,
 						Arrays.asList("https://c8.alamy.com/compfr/ay8yy6/historique-irlandais-bouclier-d-or-de-l-age-du-bronze-ay8yy6.jpg"),
 						Arrays.asList(shieldTag),
 						50
@@ -124,7 +124,7 @@ public class RpgstorebackApplication {
 						"Tu deviens juste invisible mdr",
 						1,
 						9999,
-						admin.getId(),
+						admin,
 						Arrays.asList("https://upload.wikimedia.org/wikipedia/commons/d/d4/One_Ring_Blender_Render.png"),
 						Arrays.asList(legendaryTag),
 						0
