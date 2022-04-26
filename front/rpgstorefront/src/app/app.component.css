@@ -9,11 +9,16 @@
 /*}*/
 
 i {
-  font-size: 25px;
+  /*font-size: 25px;*/
+}
+
+.container {
+  background: white;
+  padding: 0;
 }
 
 body {
-  background:url("src/assets/img/jesse-gardner-mERlBKFGJiQ-unsplash.jpg") no-repeat,  linear-gradient(90deg, rgba(223,229,227,1) 0%, rgba(242,246,245,1) 51%, rgba(216,222,220,1) 100%);
+  background:url("src/assets/img/casey-horner-4rDCa5hBlCs-unsplash.jpg") no-repeat,  linear-gradient(90deg, rgba(223,229,227,1) 0%, rgba(242,246,245,1) 51%, rgba(216,222,220,1) 100%);
   /*background-position: center;*/
   background-size: cover;
 

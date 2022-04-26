@@ -1,11 +1,10 @@
 
-<div class="container-fluid" >
+
 
   <h3>Filtrer par prix :</h3>
   <button type="button" class="btn btn-primary" (click)="sortOrder()">Order</button>
 
 
-  <!--  Affichage des voitures -->
   <div class="d-flex flex-wrap flex-row justify-content-center align-items-stretch align-content-stretch">
 
     <div class="m-3" *ngFor="let product of listProducts|priceOrder:sortByPriceValue">
@@ -18,6 +17,6 @@
 
   </div>
 
-</div>
+
 
 

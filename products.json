@@ -242,5 +242,107 @@
                 }
             ]
         }
+    ],
+    "tags": [
+        {
+            "id": 1,
+            "title": "Soin",
+            "description": "Section dédiée aux soins pour les combats ou hors combat"
+        },
+        {
+            "id": 2,
+            "title": "Healing",
+            "description": "Section dédiée aux soins pour les combats ou hors combat"
+        },
+        {
+            "id": 3,
+            "title": "Amélioration",
+            "description": "Section dédiée aux améliorations de stats"
+        },
+        {
+            "id": 4,
+            "title": "Upgrade",
+            "description": "Section dédiée aux améliorations de stats"
+        },
+        {
+            "id": 5,
+            "title": "Rare",
+            "description": "Section dédiée aux objets uniques et rares à trouver"
+        },
+        {
+            "id": 6,
+            "title": "Arme",
+            "description": "Section dédiée aux armes"
+        },
+        {
+            "id": 7,
+            "title": "Weapon",
+            "description": "Section dédiée aux armes"
+        },
+        {
+            "id": 8,
+            "title": "Epée",
+            "description": "Section dédiée aux épées"
+        },
+        {
+            "id": 9,
+            "title": "Sword",
+            "description": "Section dédiée aux épées"
+        },
+        {
+            "id": 10,
+            "title": "Utile",
+            "description": "Section dédiée aux objets utiles"
+        },
+        {
+            "id": 11,
+            "title": "Util",
+            "description": "Section dédiée aux objets utiles"
+        },
+        {
+            "id": 12,
+            "title": "Commun",
+            "description": "Section dédiée aux objets communs et faciles à trouver"
+        },
+        {
+            "id": 13,
+            "title": "Common",
+            "description": "Section dédiée aux objets communs et faciles à trouver"
+        },
+        {
+            "id": 14,
+            "title": "Légendaire",
+            "description": ""
+        },
+        {
+            "id": 15,
+            "title": "boss",
+            "description": ""
+        },
+        {
+            "id": 16,
+            "title": "item",
+            "description": ""
+        },
+        {
+            "id": 17,
+            "title": "Legend of Zelda",
+            "description": ""
+        },
+        {
+            "id": 18,
+            "title": "Animal",
+            "description": ""
+        },
+        {
+            "id": 19,
+            "title": "Monture",
+            "description": ""
+        },
+        {
+            "id": 20,
+            "title": "Instrument",
+            "description": ""
+        }
     ]
 }

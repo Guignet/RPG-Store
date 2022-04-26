@@ -1,5 +1,6 @@
-<span class="badge badge-pill badge-primary" *ngIf="tag.title; else na">
+
+<a class="tag m-1 d-flex" href="/tag-details/{{tag.id}}" *ngIf="tag.title; else na">
   {{tag.title}}
-</span>
+</a>
 
 <ng-template #na>Non renseigné</ng-template>
