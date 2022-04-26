@@ -20,7 +20,7 @@
             <th>Username</th>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th>Role</th>
+            <th th:each="role:${account.roleList}" >Role</th>
             <th colspan="3">Actions</th>
         </tr>
         </thead>
@@ -29,18 +29,35 @@
             <td th:utext="${account.username}"></td>
             <td th:utext="${account.firstName}"></td>
             <td th:utext="${account.lastName}"></td>
-            <td th:utext="${account.roleList[0].name}"></td>
-            <td><a href="/account-details?id=${account.id}">Details</a></td>
+            <td th:each="role:${account.roleList}" th:utext="${role.name}"></td>
             <td>
-                <form th:action="@{/auth/removeAccount}" method="post">
+                <form th:action="@{/auth/remove-account}" method="post">
                     <input hidden name="accountId"  th:value="${account.id}">
                     <button type="submit">Remove</button>
                 </form>
             </td>
-            <td th:if="${!account.isActive()}">
-                <form th:action="@{/auth/activateAccount}" method="post">
+            <td>
+                <form th:action="@{/auth/account-details}" method="post">
                     <input hidden name="accountId"  th:value="${account.id}">
+                    <button type="submit">Details</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/auth/update-account}" method="get">
+                    <input hidden name="accountId"  th:value="${account.id}">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td th:if="${!account.isActive()}">
+                <form th:action="@{/auth/activate-account}" method="post">
+                    <input hidden name="accountId" th:value="${account.id}" >
                     <button type="submit">Activate</button>
+                </form>
+            </td>
+            <td th:if="${account.isActive()}">
+                <form th:action="@{/auth/deactivate-account}" method="post">
+                    <input hidden name="accountId" th:value="${account.id}" >
+                    <button type="submit">Deactivate</button>
                 </form>
             </td>
         </tr>

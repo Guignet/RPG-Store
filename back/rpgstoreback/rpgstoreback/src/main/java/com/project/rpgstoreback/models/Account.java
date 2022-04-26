@@ -153,6 +153,10 @@ public class Account implements UserDetails {
         this.listProducts.add(product);
     }
 
+    public void removeProduct(Product product){
+        this.listProducts.remove(product);
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -179,5 +183,9 @@ public class Account implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
     }
+
+
+
+
 
 }

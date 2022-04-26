@@ -1,4 +1,4 @@
-package com.project.rpgstoreback.models;
+package com.project.rpgstoreback.models.form;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountForm {
-
+    private Long id;
     private String firstName;
     private String lastName;
     private String username;
@@ -84,5 +84,13 @@ public class AccountForm {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

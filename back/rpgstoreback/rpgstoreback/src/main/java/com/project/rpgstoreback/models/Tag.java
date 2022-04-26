@@ -56,4 +56,7 @@ public class Tag {
     public void setListProducts(List<Product> listProducts) {
         this.listProducts = listProducts;
     }
+
+
+
 }
