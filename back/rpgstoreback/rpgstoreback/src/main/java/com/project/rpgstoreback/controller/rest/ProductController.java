@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController("ProductRestController")
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products")
 public class ProductController {

@@ -44,12 +44,12 @@ public abstract class Product {
 
     public Product(){}
 
-    public Product(String title, String description, int quantity, long price, Long seller, List<String> pictures, List<Tag> listTags) {
+    public Product(String title, String description, int quantity, long price, Account creator, List<String> pictures, List<Tag> listTags) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.creator = seller;
+        this.creator = creator;
         this.pictures = pictures;
         this.listTags = listTags;
     }
@@ -94,11 +94,11 @@ public abstract class Product {
         this.price = price;
     }
 
-    public Long getCreator() {
+    public Account getCreator() {
         return creator;
     }
 
-    public void setCreator(Long creator) {
+    public void setCreator(Account creator) {
         this.creator = creator;
     }
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController("WeaponRestController")
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products/weapons")
 public class WeaponController {

@@ -15,7 +15,7 @@ public class Armor extends Product{
 
     public Armor() {}
 
-    public Armor(String title, String description, int quantity, long price, Long seller, List<String> pictures, List<Tag> listTags, int resistance) {
+    public Armor(String title, String description, int quantity, long price, Account seller, List<String> pictures, List<Tag> listTags, int resistance) {
         super(title, description, quantity, price, seller, pictures, listTags);
         this.resistance = resistance;
     }

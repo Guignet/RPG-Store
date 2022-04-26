@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
+@RestController("TagRestController")
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/tags")
 public class TagController {
