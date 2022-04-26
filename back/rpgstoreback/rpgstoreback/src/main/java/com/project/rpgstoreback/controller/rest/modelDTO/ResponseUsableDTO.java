@@ -14,7 +14,7 @@ public class ResponseUsableDTO extends ResponseProductDTO{
         this.durability = durability;
     }
 
-    public ResponseUsableDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDto creator, List<String> pictures, List<TagDTO> listTags, int durability) {
+    public ResponseUsableDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDTO creator, List<String> pictures, List<TagDTO> listTags, int durability) {
         super(id, title, description, quantity, price, creator, pictures, listTags);
         this.durability = durability;
 

@@ -1,17 +1,17 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
-public class TagDTO {
+public class ResponseTagDTO {
 
     private Long id;
     private String name;
     private String description;
+    private List<ResponseTagProductDTO> listProd;
 
-    public TagDTO() {}
+    public ResponseTagDTO() {}
 
-    public TagDTO(Long id, String name, String description) {
+    public ResponseTagDTO(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -41,4 +41,11 @@ public class TagDTO {
         this.description = description;
     }
 
+    public List<ResponseTagProductDTO> getListProd() {
+        return listProd;
+    }
+
+    public void setListProd(List<ResponseTagProductDTO> listProd) {
+        this.listProd = listProd;
+    }
 }

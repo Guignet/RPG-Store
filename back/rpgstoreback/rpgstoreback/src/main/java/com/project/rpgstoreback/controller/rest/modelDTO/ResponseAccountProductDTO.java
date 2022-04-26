@@ -1,12 +1,10 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
-import com.project.rpgstoreback.models.Role;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ResponseAccountProductDto {
+public class ResponseAccountProductDTO {
     private Long id;
     private String firstName;
     private String lastName;
@@ -17,9 +15,9 @@ public class ResponseAccountProductDto {
     private boolean isActive;
     private List<Long> roleList = new ArrayList<>();
 
-    public ResponseAccountProductDto(){}
+    public ResponseAccountProductDTO(){}
 
-    public ResponseAccountProductDto(Long id, String firstName, String lastName, String username, String password, String email, LocalDate registrationDate, boolean isActive, List<Long> roleList) {
+    public ResponseAccountProductDTO(Long id, String firstName, String lastName, String username, String password, String email, LocalDate registrationDate, boolean isActive, List<Long> roleList) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

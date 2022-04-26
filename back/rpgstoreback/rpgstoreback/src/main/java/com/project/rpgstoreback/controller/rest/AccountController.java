@@ -12,12 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/accounts")
 public class AccountController {
@@ -167,6 +165,11 @@ public class AccountController {
         deleteAc.setListProducts(new ArrayList<>());
         this.accountRepository.save(deleteAc);
 
+
+        //suppr porduct create
+
+
+
         this.accountRepository.deleteById(idAccount);
 
         return ResponseEntity
@@ -234,7 +237,7 @@ public class AccountController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -276,7 +279,7 @@ public class AccountController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -318,7 +321,7 @@ public class AccountController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),

@@ -8,15 +8,13 @@ import com.project.rpgstoreback.models.Weapon;
 import com.project.rpgstoreback.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products")
 public class ProductController {
@@ -77,7 +75,7 @@ public class ProductController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -119,7 +117,7 @@ public class ProductController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -161,7 +159,7 @@ public class ProductController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),

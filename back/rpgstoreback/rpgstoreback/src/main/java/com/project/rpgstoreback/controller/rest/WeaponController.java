@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products/weapons")
 public class WeaponController {
@@ -123,7 +123,7 @@ public class WeaponController {
         //vide la list Tag
         deleteWe.setListTags(new ArrayList<>());
         this.productRepository.save(deleteWe);
-
+//
         this.productRepository.deleteById(idWeapon);
 
         return ResponseEntity
@@ -180,7 +180,7 @@ public class WeaponController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -196,8 +196,8 @@ public class WeaponController {
         return prodDto;
     }
 
-    public ResponseAccountProductDto fetchAccountDto(Account account){
-        ResponseAccountProductDto dto = new ResponseAccountProductDto();
+    public ResponseAccountProductDTO fetchAccountDto(Account account){
+        ResponseAccountProductDTO dto = new ResponseAccountProductDTO();
         dto.setId(account.getId());
         dto.setFirstName(account.getFirstName());
         dto.setLastName(account.getLastName());

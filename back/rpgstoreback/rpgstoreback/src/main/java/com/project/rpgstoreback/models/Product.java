@@ -21,7 +21,7 @@ public abstract class Product {
     @NotNull
     private long price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "creator_id")
     private Account creator; //seller ou admin
 
@@ -30,7 +30,7 @@ public abstract class Product {
     private List<String> pictures;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //, mappedBy = "listProducts"
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //, mappedBy = "listProducts"
     @JoinTable(
             name = "tag_associate",
             joinColumns = @JoinColumn(name="product_id"),
@@ -114,5 +114,13 @@ public abstract class Product {
 
     public void setListTags(List<Tag> listTags) {
         this.listTags = listTags;
+    }
+
+    public void addTag(Tag tag) {
+        this.listTags.add(tag);
+    }
+
+    public void removeTag(Tag tag) {
+        this.listTags.remove(tag);
     }
 }

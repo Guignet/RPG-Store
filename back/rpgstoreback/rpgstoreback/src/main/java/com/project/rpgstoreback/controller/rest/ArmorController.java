@@ -11,11 +11,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products/armors")
 public class ArmorController {
@@ -125,7 +124,6 @@ public class ArmorController {
         deleteAr.setListTags(new ArrayList<>());
         this.productRepository.save(deleteAr);
 
-
         this.productRepository.deleteById(idArmor);
 
         return ResponseEntity
@@ -160,7 +158,7 @@ public class ArmorController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -198,8 +196,8 @@ public class ArmorController {
         return dto;
     }
 
-    public ResponseAccountProductDto fetchAccountDto(Account account){
-        ResponseAccountProductDto dto = new ResponseAccountProductDto();
+    public ResponseAccountProductDTO fetchAccountDto(Account account){
+        ResponseAccountProductDTO dto = new ResponseAccountProductDTO();
         dto.setId(account.getId());
         dto.setFirstName(account.getFirstName());
         dto.setLastName(account.getLastName());

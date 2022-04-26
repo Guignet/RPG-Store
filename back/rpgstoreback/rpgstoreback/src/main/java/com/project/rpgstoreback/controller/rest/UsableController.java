@@ -11,11 +11,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/api/auth/products/usables")
 public class UsableController {
@@ -158,7 +157,7 @@ public class UsableController {
                 );
 
 
-        ResponseAccountProductDto creator = new ResponseAccountProductDto(
+        ResponseAccountProductDTO creator = new ResponseAccountProductDTO(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -196,8 +195,8 @@ public class UsableController {
         return dto;
     }
 
-    public ResponseAccountProductDto fetchAccountDto(Account account){
-        ResponseAccountProductDto dto = new ResponseAccountProductDto();
+    public ResponseAccountProductDTO fetchAccountDto(Account account){
+        ResponseAccountProductDTO dto = new ResponseAccountProductDTO();
         dto.setId(account.getId());
         dto.setFirstName(account.getFirstName());
         dto.setLastName(account.getLastName());

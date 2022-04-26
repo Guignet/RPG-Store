@@ -1,12 +1,5 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
-import com.project.rpgstoreback.models.Account;
-import com.project.rpgstoreback.models.Tag;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public abstract class ResponseProductDTO {
@@ -16,14 +9,14 @@ public abstract class ResponseProductDTO {
     private String description;
     private int quantity;
     private long price;
-    private ResponseAccountProductDto creator;
+    private ResponseAccountProductDTO creator;
     private List<String> pictures;
     private List<TagDTO> listTags;
 
     public ResponseProductDTO() {
     }
 
-    public ResponseProductDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDto creator, List<String> pictures, List<TagDTO> listTags) {
+    public ResponseProductDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDTO creator, List<String> pictures, List<TagDTO> listTags) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -85,11 +78,11 @@ public abstract class ResponseProductDTO {
         this.price = price;
     }
 
-    public ResponseAccountProductDto getCreator() {
+    public ResponseAccountProductDTO getCreator() {
         return creator;
     }
 
-    public void setCreator(ResponseAccountProductDto creator) {
+    public void setCreator(ResponseAccountProductDTO creator) {
         this.creator = creator;
     }
 
