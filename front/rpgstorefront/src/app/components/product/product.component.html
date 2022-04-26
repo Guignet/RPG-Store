@@ -1,0 +1,88 @@
+
+
+<div class="card" style="width: 18rem;">
+
+
+  <ngb-carousel  #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let img of product.pictures; index as i">
+
+      <!--      Mettre un onclick et agrandir l'image-->
+      <!--      <a href="#" class="pop">-->
+      <div style="height: 200px;background: #F6F6F6" class="picsum-img-wrapper">
+        <img  [src]="img" alt="My image {{i + 1}} description">
+      </div>
+      <!--      </a>-->
+
+    </ng-template>
+  </ngb-carousel>
+
+
+
+  <div class="card-body">
+
+    <h5 class="card-title text-center ">
+      <span *ngIf="product.title; else na">
+        {{product.title}}
+      </span>
+    </h5>
+
+
+
+
+    <h5 class="card-title d-flex justify-content-center">
+      <span *ngIf="product.price; else na">
+        {{product.price | currency: '€':'symbol':'1.0-2'}}
+      </span>
+    </h5>
+
+    <p class="card-text d-flex justify-content-center">
+      <ng-container [ngSwitch]="true">
+        <span *ngSwitchCase="product.quantity === 1" class="stock-rare">Stock : objet unique</span>
+        <span *ngSwitchCase="product.quantity === 0" class="stock-non-disponible">Stock : non disponible</span>
+        <span *ngSwitchDefault class="stock-normal">Stock : {{product.quantity}}</span>
+      </ng-container>
+    </p>
+
+
+
+
+
+
+
+
+<!-- Faire un addToCart() -->
+    <button class="btn btn-primary col-12 mb-1">Ajouter au panier</button>
+
+
+    <a href="/product-details/{{product.id}}" class="btn btn-success success col-12 mb-1">Voir plus</a>
+
+
+    <p class="card-text span">Vendu par :
+      <a *ngIf="product.seller; else na">
+        {{product.seller}}
+      </a>
+    </p>
+
+
+
+    <div class="mt-2 d-flex flex-row flex-wrap justify-content-center align-items-center">
+      <div *ngFor="let tag of product.tags;">
+        <a class="tag m-1" *ngIf="tag.title; else na">
+          {{tag.title}}
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+
+<ng-template #na>Non renseigné</ng-template>
+

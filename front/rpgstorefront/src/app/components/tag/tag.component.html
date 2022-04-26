@@ -1,0 +1,6 @@
+
+<a class="tag m-1 d-flex" href="/tag-details/{{tag.id}}" *ngIf="tag.title; else na">
+  {{tag.title}}
+</a>
+
+<ng-template #na>Non renseigné</ng-template>
