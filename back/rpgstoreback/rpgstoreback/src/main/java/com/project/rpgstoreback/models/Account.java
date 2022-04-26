@@ -50,7 +50,9 @@ public class Account implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roleList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY
+//            , cascade = CascadeType.ALL
+    )
     @JoinTable(name="panierUser")
     private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 
@@ -151,6 +153,10 @@ public class Account implements UserDetails {
         this.listProducts.add(product);
     }
 
+    public void removeProduct(Product product){
+        this.listProducts.remove(product);
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -177,5 +183,9 @@ public class Account implements UserDetails {
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
     }
+
+
+
+
 
 }
