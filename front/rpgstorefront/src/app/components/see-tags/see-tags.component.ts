@@ -22,6 +22,7 @@ export class SeeTagsComponent implements OnInit {
       .subscribe({
         next: listTags => {
           this.listTags = listTags;
+          console.log(listTags)
         },
         error: err => {
           console.log(err);

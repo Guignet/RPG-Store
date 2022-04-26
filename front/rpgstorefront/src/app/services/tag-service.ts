@@ -11,7 +11,7 @@ import {CreateTag} from "../models/create-tag";
 })
 export class TagService {
 
-  private BASE_URL = "http://localhost:3000";
+  private BASE_URL = "http://localhost:8080/api/auth";
 
   private httpOptions = {
     headers: new HttpHeaders({

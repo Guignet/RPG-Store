@@ -9,7 +9,7 @@ import {CreateProduct} from "../models/create-product";
 })
 export class ProductService {
 
-  private BASE_URL = "http://localhost:3000";
+  private BASE_URL = "http://localhost:8080/api/auth";
 
   private httpOptions = {
     headers: new HttpHeaders({

@@ -6,8 +6,8 @@
 
   <div class="d-flex flex-wrap flex-row justify-content-center align-items-stretch align-content-stretch">
 
-    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sortByPriceValue">
-<!--    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sort">-->
+<!--    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sortByPriceValue">-->
+    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sort">
 
       <app-product [productParam]="product" ></app-product>
 
