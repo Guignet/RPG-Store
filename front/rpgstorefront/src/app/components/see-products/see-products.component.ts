@@ -12,6 +12,8 @@ export class SeeProductsComponent implements OnInit {
 
   sortByPriceValue: string = 'ASC';
 
+
+
   listProducts: Product[] = [];
 
   constructor(private productService: ProductService) { }
@@ -40,6 +42,8 @@ export class SeeProductsComponent implements OnInit {
       this.sortByPriceValue = 'ASC'
     }
   }
+
+
 
 }
 

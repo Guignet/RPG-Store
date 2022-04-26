@@ -23,6 +23,7 @@ import { TagDetailsComponent } from './components/tag-details/tag-details.compon
 import {registerLocaleData} from "@angular/common";
 import localFR from '@angular/common/locales/fr';
 import { HomeComponent } from './components/home/home.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 registerLocaleData(localFR, 'fr');
 
@@ -43,7 +44,8 @@ registerLocaleData(localFR, 'fr');
     CreateTagComponent,
     CreateProductComponent,
     TagDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
