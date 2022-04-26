@@ -85,6 +85,7 @@ public class RpgstorebackApplication {
 				Tag potionTag = new Tag("potion","Divers utilité");
 				Tag instrumentTag = new Tag("instrument","De la musique en combat ? Quelle idée ...");
 				Tag legendaryTag = new Tag("légendaire","Un object d'une rareté inouï");
+				Tag armorTag = new Tag("armure","Divers protection pour le corps");
 
 				//tagRepository.save(swordTag);
 				//tagRepository.save(shieldTag);
@@ -92,6 +93,7 @@ public class RpgstorebackApplication {
 				tagRepository.save(potionTag);
 				tagRepository.save(instrumentTag);
 				//tagRepository.save(legendaryTag);
+				tagRepository.save(armorTag);
 
 				Weapon sword = new Weapon(
 						"Muramasa",
@@ -103,6 +105,9 @@ public class RpgstorebackApplication {
 						Arrays.asList(swordTag,legendaryTag),
 						120
 				);
+				System.out.println("SWORD");
+				System.out.println(sword);
+
 				Armor shield = new Armor(
 						"Bouclier de Midas",
 						"bouclier d'un avare",
@@ -133,6 +138,9 @@ public class RpgstorebackApplication {
 				user.addProduct(shield); // update via premier save (dans état manage)
 
 				//tagRepository.delete(legendaryTag.getId());
+
+				System.out.println("TAG PRODUIT");
+				sword.getListTags().stream().forEach(s -> System.out.println(s));
 			}
 		};
 	}

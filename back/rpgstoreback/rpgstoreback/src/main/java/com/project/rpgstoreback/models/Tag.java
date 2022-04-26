@@ -15,12 +15,18 @@ public class Tag {
     private String name;
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "listTags")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "listTags")
     private List<Product> listProducts = new ArrayList<>();
 
     public Tag(){}
 
     public Tag(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Tag(Long id, String name, String description) {
+        this.id = id;
         this.name = name;
         this.description = description;
     }

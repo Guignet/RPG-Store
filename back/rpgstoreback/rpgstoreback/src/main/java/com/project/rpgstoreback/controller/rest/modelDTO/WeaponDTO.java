@@ -1,57 +1,39 @@
-package com.project.rpgstoreback.models;
+package com.project.rpgstoreback.controller.rest.modelDTO;
+
+import com.project.rpgstoreback.models.Account;
+import com.project.rpgstoreback.models.Tag;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Product {
+public class WeaponDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NotBlank(message ="Il faut un nom au produit")
     private String title;
     private String description;
-    @NotNull
     private int quantity;
-    @NotNull
     private long price;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "creator_id")
     private Account creator; //seller ou admin
+    private List<String> pictures = new ArrayList<>();
+    private List<Long> listTags = new ArrayList<>(); //id des Tags
+    private int damage;
 
-//     @Column(name = "creator_id")
-//     private Long creator; //seller ou admin
+    public WeaponDTO(){}
 
-    @ElementCollection(targetClass=String.class)
-    @NotEmpty(message = "Il faut au moins une image")
-    private List<String> pictures;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) //, mappedBy = "listProducts"
-    @JoinTable(
-            name = "tag_associate",
-            joinColumns = @JoinColumn(name="product_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private List<Tag> listTags;
-
-
-
-    public Product(){}
-
-    public Product(String title, String description, int quantity, long price, Long seller, List<String> pictures, List<Tag> listTags) {
+    public WeaponDTO(Long id, String title, String description, int quantity, long price, Account creator, List<String> pictures, List<Long> listTags, int damage) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
-        this.creator = seller;
+        this.creator = creator;
         this.pictures = pictures;
         this.listTags = listTags;
+        this.damage = damage;
     }
 
     public Long getId() {
@@ -94,11 +76,11 @@ public abstract class Product {
         this.price = price;
     }
 
-    public Long getCreator() {
+    public Account getCreator() {
         return creator;
     }
 
-    public void setCreator(Long creator) {
+    public void setCreator(Account creator) {
         this.creator = creator;
     }
 
@@ -110,19 +92,19 @@ public abstract class Product {
         this.pictures = pictures;
     }
 
-    public List<Tag> getListTags() {
+    public List<Long> getListTags() {
         return listTags;
     }
 
-    public void setListTags(List<Tag> listTags) {
+    public void setListTags(List<Long> listTags) {
         this.listTags = listTags;
     }
 
-    public void addTag(Tag tag) {
-        this.listTags.add(tag);
+    public int getDamage() {
+        return damage;
     }
 
-    public void removeTag(Tag tag) {
-        this.listTags.remove(tag);
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }

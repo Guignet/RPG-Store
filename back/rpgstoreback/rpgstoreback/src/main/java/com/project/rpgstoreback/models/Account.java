@@ -50,9 +50,7 @@ public class Account implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roleList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY
-//            , cascade = CascadeType.ALL
-    )
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name="panierUser")
     private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 
