@@ -1,9 +1,6 @@
 package com.project.rpgstoreback.controller.web;
 
-import com.project.rpgstoreback.models.Account;
 import com.project.rpgstoreback.models.Product;
-import com.project.rpgstoreback.models.form.AccountForm;
-import com.project.rpgstoreback.models.Role;
 import com.project.rpgstoreback.models.Tag;
 import com.project.rpgstoreback.models.form.TagForm;
 import com.project.rpgstoreback.repository.AccountRepository;
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,10 +62,10 @@ public class TagController {
     }
     @PostMapping("/create-tag")
     public String create(@ModelAttribute TagForm tagForm){
-        if(tagRepository.existsByName(tagForm.getName())){
+        if(tagRepository.existsByTitle(tagForm.getTitle())){
             return  "redirect:/auth/create-account";
         }else{
-            Tag tosave = new Tag(tagForm.getName(), tagForm.getDescription());
+            Tag tosave = new Tag(tagForm.getTitle(), tagForm.getDescription());
             tagRepository.save(tosave);
 
         }

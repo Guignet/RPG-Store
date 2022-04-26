@@ -8,8 +8,6 @@ import com.project.rpgstoreback.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -145,7 +143,7 @@ public class WeaponController {
 
         List<TagDTO> tags = new ArrayList<>();
         weapon.getListTags().forEach(
-                t -> tags.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
+                t -> tags.add(new TagDTO(t.getId(),t.getTitle(),t.getDescription()))
         );
         dto.setListTags(tags);
 
@@ -168,7 +166,7 @@ public class WeaponController {
         //SET TAG PRODUCT
         List<TagDTO> taglist = new ArrayList<>();
         product.getListTags().forEach(
-                t -> taglist.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
+                t -> taglist.add(new TagDTO(t.getId(),t.getTitle(),t.getDescription()))
         );
         prodDto.setListTags(taglist);
 

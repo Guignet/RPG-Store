@@ -12,7 +12,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @NotBlank
-    private String name;
+    private String title;
     private String description;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "listTags")
@@ -20,14 +20,14 @@ public class Tag {
 
     public Tag(){}
 
-    public Tag(String name, String description) {
-        this.name = name;
+    public Tag(String title, String description) {
+        this.title = title;
         this.description = description;
     }
 
-    public Tag(Long id, String name, String description) {
+    public Tag(Long id, String title, String description) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.description = description;
     }
 
@@ -39,12 +39,12 @@ public class Tag {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
