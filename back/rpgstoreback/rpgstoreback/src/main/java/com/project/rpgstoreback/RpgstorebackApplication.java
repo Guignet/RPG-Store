@@ -84,7 +84,7 @@ public class RpgstorebackApplication {
 				Tag gunTag = new Tag("gun","Arme distance moderne");
 				Tag potionTag = new Tag("potion","Divers utilité");
 				Tag instrumentTag = new Tag("instrument","De la musique en combat ? Quelle idée ...");
-				Tag legendaryTag = new Tag("légendaire","Un object d'une rareté inouï");
+				Tag legendaryTag = new Tag("legendaire","Un object d'une rareté inouï");
 				Tag armorTag = new Tag("armure","Divers protection pour le corps");
 
 				//tagRepository.save(swordTag);

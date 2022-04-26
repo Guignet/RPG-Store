@@ -24,6 +24,9 @@ import {registerLocaleData} from "@angular/common";
 import localFR from '@angular/common/locales/fr';
 import { HomeComponent } from './components/home/home.component';
 import { FiltersComponent } from './components/filters/filters.component';
+import { TagFilterPipe } from './pipes/tag-filter.pipe';
+import { CartComponent } from './components/cart/cart.component';
+import { LoginComponent } from './components/login/login.component';
 
 registerLocaleData(localFR, 'fr');
 
@@ -45,7 +48,10 @@ registerLocaleData(localFR, 'fr');
     CreateProductComponent,
     TagDetailsComponent,
     HomeComponent,
-    FiltersComponent
+    FiltersComponent,
+    TagFilterPipe,
+    CartComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

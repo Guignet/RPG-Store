@@ -35,45 +35,52 @@
         </li>
 
 
+
 <!--        <c:choose>-->
 <!--          <c:when test="${empty sessionScope.user and empty sessionScope.admin}">-->
-            <li class="nav-item m-2">
-              <a class="btn nav-link btn-grad" aria-current="page" href="/login">Se connecter</a>
-            </li>
+<!--            <li class="nav-item m-2">-->
+<!--              <a class="btn nav-link btn-grad" aria-current="page" href="/login">Se connecter</a>-->
+<!--            </li>-->
 
-            <li class="nav-item m-2">
-              <a class="btn nav-link btn-grad" aria-current="page" href="/add-account">Créer un compte</a>
-            </li>
+<!--            <li class="nav-item m-2">-->
+<!--              <a class="btn nav-link btn-grad" aria-current="page" href="/add-account">Créer un compte</a>-->
+<!--            </li>-->
 
 <!--          </c:when>-->
 <!--          <c:otherwise>-->
 
-
-            <li class="nav-item m-2">
-              <a class="btn nav-link btn-grad" aria-current="page" href="/logout">Se déconnecter</a>
-            </li>
+        <li class="nav-item m-2">
+          <a class="btn nav-link btn-grad" aria-current="page" href="/signin">Se connecter</a>
+        </li>
+        <li class="nav-item m-2">
+          <a class="btn nav-link btn-grad" aria-current="page" href="/signup">Créer un Compte</a>
+        </li>
+        <li class="nav-item m-2">
+          <a class="btn nav-link btn-grad" aria-current="page" href="/logout">Se déconnecter</a>
+        </li>
+        <li class="nav-item m-2">
+          <a class="btn nav-link btn-grad position-relative" aria-current="page" href="/user/show-cart">
+            Cart
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+<!--                            <c:out value="${sessionScope.user.cart.size()}"></c:out>-->
+                            </span>
+          </a>
+        </li>
 
 <!--          </c:otherwise>-->
 <!--        </c:choose>-->
 
 <!--        <c:if test="${not empty sessionScope.admin}">-->
 
-          <li class="nav-item m-2">
-            <a class="btn nav-link btn-grad" aria-current="page" href="/admin/">Administration</a>
-          </li>
+<!--          <li class="nav-item m-2">-->
+<!--            <a class="btn nav-link btn-grad" aria-current="page" href="/admin/">Administration</a>-->
+<!--          </li>-->
 
 <!--        </c:if>-->
 <!--        <c:if test="${not empty sessionScope.user}">-->
 
 
-          <li class="nav-item m-2">
-            <a class="btn nav-link btn-grad position-relative" aria-current="page" href="/user/show-cart">
-              Cart
-              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-<!--                            <c:out value="${sessionScope.user.cart.size()}"></c:out>-->
-                            </span>
-            </a>
-          </li>
+
 
 <!--        </c:if>-->
 

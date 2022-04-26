@@ -1,5 +1,6 @@
 import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
 import {NgbCarousel, NgbSlideEvent, NgbSlideEventSource} from "@ng-bootstrap/ng-bootstrap";
+import {Account} from "./models/account";
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,28 @@ export class AppComponent {
   pauseOnIndicator = false;
   pauseOnHover = true;
   pauseOnFocus = true;
+
+  account: Account={
+    email: "",
+    firstName: "",
+    id: 0,
+    isActive: false,
+    lastName: "",
+    password: "",
+    registrationDate: "",
+    username: ""
+
+  };
+
+
+
+
+
+
+
+
+
+
 
   @ViewChild('carousel', {static : true}) carousel!: NgbCarousel;
 

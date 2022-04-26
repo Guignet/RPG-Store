@@ -1,4 +1,5 @@
 import {Tag} from "./tag";
+import {Account} from "./account";
 
 export interface Product {
 
@@ -7,8 +8,8 @@ export interface Product {
   description: string;
   quantity: number;
   price: number;
-  seller: string;
+  creator: Account;
   pictures: string[];
-  tags: Tag[];
+  listTags: Tag[];
 
 }

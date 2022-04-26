@@ -2,12 +2,31 @@
 
 
 
-<app-filters></app-filters>
+<!--<app-filters></app-filters>-->
+
+
+<h2>Filtrer par prix :</h2>
+<button type="button" class="btn btn-primary" (click)="sortOrder()">Croissant</button>
+<button type="button" class="btn btn-primary" (click)="sortOrder()">Décroissant</button>
+
+<h2>Filtrer par rareté :</h2>
+<button type="button" class="btn btn-primary" (click)="rareFunction('')">Tous</button>
+<button type="button" class="btn btn-primary" (click)="rareFunction('common')">Commun</button>
+<button type="button" class="btn btn-primary" (click)="rareFunction('uncommon')">Non Commun</button>
+<button type="button" class="btn btn-primary" (click)="rareFunction('rare')">Rare</button>
+<button type="button" class="btn btn-primary" (click)="rareFunction('legendaire')">Légendaire</button>
+
+<h2>Rechercher par tag :</h2>
+<form class="form-inline md-form form-sm">
+  <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search" mdbInput>
+</form>
+
+
 
   <div class="d-flex flex-wrap flex-row justify-content-center align-items-stretch align-content-stretch">
 
 <!--    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sortByPriceValue">-->
-    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sort">
+    <div class="m-3" *ngFor="let product of listProducts|priceOrder:sortByPriceValue|tagFilter:searchText">
 
       <app-product [productParam]="product" ></app-product>
 

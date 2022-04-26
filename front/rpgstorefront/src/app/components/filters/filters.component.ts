@@ -18,25 +18,29 @@ export class FiltersComponent implements OnInit {
   }
 
 
-  price(param: string) {
-    if (param.toLocaleLowerCase() == "asc")
-      this.sort.price = 'asc';
-    else if  (param.toLocaleLowerCase() == "desc")
-      this.sort.price = 'desc';
-  }
-
-
-  rare(param: string) {
-    if (param.toLocaleLowerCase() == "")
-      this.sort.rare = '';
-    else if  (param.toLocaleLowerCase() == "common")
-      this.sort.rare = 'common';
-    else if  (param.toLocaleLowerCase() == "uncommon")
-      this.sort.rare = 'uncommon';
-    else if  (param.toLocaleLowerCase() == "rare")
-      this.sort.rare = 'rare';
-    else if  (param.toLocaleLowerCase() == "legend")
-      this.sort.rare = 'legend';
-  }
+  // priceFunction(param: string) {
+  //   if (param.toLocaleLowerCase() == "asc") {
+  //     this.sort.price = 'asc';
+  //     console.log('asc');
+  //   }
+  //   else if  (param.toLocaleLowerCase() == "desc") {
+  //     this.sort.price = 'desc';
+  //     console.log('desc');
+  //   }
+  // }
+  //
+  //
+  // rareFunction(param: string) {
+  //   if (param.toLocaleLowerCase() == "")
+  //     this.sort.rare = '';
+  //   else if  (param.toLocaleLowerCase() == "common")
+  //     this.sort.rare = 'common';
+  //   else if  (param.toLocaleLowerCase() == "uncommon")
+  //     this.sort.rare = 'uncommon';
+  //   else if  (param.toLocaleLowerCase() == "rare")
+  //     this.sort.rare = 'rare';
+  //   else if  (param.toLocaleLowerCase() == "legend")
+  //     this.sort.rare = 'legend';
+  // }
 
 }

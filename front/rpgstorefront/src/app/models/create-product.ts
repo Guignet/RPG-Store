@@ -8,6 +8,6 @@ export interface CreateProduct {
   price: number;
   seller: string;
   pictures: string[];
-  tags: Tag[];
+  listTags: Tag[];
 
 }

@@ -46,7 +46,7 @@ export class CreateProductComponent implements OnInit {
       price: this.createProductForm.value.price,
       seller: this.createProductForm.value.seller,
       pictures: [this.createProductForm.value.pictures],
-      tags: [this.createProductForm.value.tags]
+      listTags: [this.createProductForm.value.listTags]
     };
 
     this.productService.create(product)

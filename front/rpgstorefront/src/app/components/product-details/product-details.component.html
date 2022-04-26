@@ -58,15 +58,15 @@
 
 
     <p class="card-text span">Vendu par :
-      <a *ngIf="product.seller; else na">
-        {{product.seller}}
+      <a *ngIf="product.creator.firstName; else na">
+        {{product.creator.firstName}}
       </a>
     </p>
 
 
 
     <div class="mt-2 d-flex flex-row flex-wrap justify-content-center align-items-center">
-      <div *ngFor="let tag of product.tags;">
+      <div *ngFor="let tag of product.listTags;">
         <a class="tag m-1" *ngIf="tag.title; else na">
           {{tag.title}}
         </a>
