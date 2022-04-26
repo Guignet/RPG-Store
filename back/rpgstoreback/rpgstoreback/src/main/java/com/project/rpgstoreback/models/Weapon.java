@@ -18,6 +18,11 @@ public class Weapon extends Product{
         super(title, description, quantity, price, creator, pictures, listTags);
         this.damage = damage;
     }
+  
+//     public Weapon(String title, String description, int quantity, long price, Long seller, List<String> pictures, List<Tag> listTags, int damage) {
+//         super(title, description, quantity, price, seller, pictures, listTags);
+//         this.damage = damage;
+//     }
 
     public int getDamage() {
         return damage;

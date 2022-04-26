@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<div th:insert="header.html"></div>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<h2>Voici la liste des Utilisateurs</h2>
+<table>
+    <th:block th:each="account:${Accounts}" >
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th th:each="role:${account.roleList}" >Role</th>
+            <th colspan="3">Actions</th>
+        </tr>
+        </thead>
+        <tr>
+            <td th:utext="${account.id}">account.id</td>
+            <td th:utext="${account.username}"></td>
+            <td th:utext="${account.firstName}"></td>
+            <td th:utext="${account.lastName}"></td>
+            <td th:each="role:${account.roleList}" th:utext="${role.name}"></td>
+            <td>
+                <form th:action="@{/auth/remove-account}" method="post">
+                    <input hidden name="accountId"  th:value="${account.id}">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/auth/account-details}" method="post">
+                    <input hidden name="accountId"  th:value="${account.id}">
+                    <button type="submit">Details</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/auth/update-account}" method="get">
+                    <input hidden name="accountId"  th:value="${account.id}">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td th:if="${!account.isActive()}">
+                <form th:action="@{/auth/activate-account}" method="post">
+                    <input hidden name="accountId" th:value="${account.id}" >
+                    <button type="submit">Activate</button>
+                </form>
+            </td>
+            <td th:if="${account.isActive()}">
+                <form th:action="@{/auth/deactivate-account}" method="post">
+                    <input hidden name="accountId" th:value="${account.id}" >
+                    <button type="submit">Deactivate</button>
+                </form>
+            </td>
+        </tr>
+    </th:block>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

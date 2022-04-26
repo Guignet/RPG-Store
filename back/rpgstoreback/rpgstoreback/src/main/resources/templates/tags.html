@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+<div th:insert="header.html"></div>
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+<h2>Voici la liste des Produits</h2>
+<table>
+    <th:block th:each="tag:${Tags}" >
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+
+            <th colspan="3">Actions</th>
+        </tr>
+        </thead>
+        <tr>
+            <td th:utext="${tag.id}">account.id</td>
+            <td th:utext="${tag.name}"></td>
+            <td th:utext="${tag.description}"></td>
+
+
+            <td>
+                <form th:action="@{/auth/remove-tag}" method="post">
+                    <input hidden name="tagId"  th:value="${tag.id}">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+<!--            <td>-->
+<!--                <form th:action="@{/auth/tag-details}" method="post">-->
+<!--                    <input hidden name="tagId"  th:value="${tag.id}">-->
+<!--                    <button type="submit">Details</button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <form th:action="@{/auth/update-product}" method="get">-->
+<!--                    <input hidden name="accountId"  th:value="${product.id}">-->
+<!--                    <button type="submit">Update</button>-->
+<!--                </form>-->
+<!--            </td>-->
+
+        </tr>
+    </th:block>
+</table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>

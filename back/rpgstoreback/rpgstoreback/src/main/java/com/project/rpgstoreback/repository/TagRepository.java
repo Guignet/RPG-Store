@@ -15,4 +15,6 @@ public interface TagRepository extends CrudRepository<Tag, Long> {
     @Modifying
     @Query("delete from Tag t where t.id = :id")
     void delete(@Param("id") Long entityId);
+
+    Boolean existsByName(String name);
 }
