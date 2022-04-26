@@ -1,33 +1,30 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
-import com.project.rpgstoreback.models.Account;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class ResponseWeaponDTO extends ResponseProductDTO{
+public class ResponseArmorDTO extends ResponseProductDTO{
 
 
-    private int damage;
+    private int resistance;
 
-    public ResponseWeaponDTO(){}
+    public ResponseArmorDTO(){}
 
-    public ResponseWeaponDTO(Long id, String title, String description, int quantity, long price, List<String> pictures, int damage) {
+    public ResponseArmorDTO(Long id, String title, String description, int quantity, long price, List<String> pictures, int resistance) {
         super(id, title, description, quantity, price, pictures);
-        this.damage = damage;
+        this.resistance = resistance;
     }
 
-    public ResponseWeaponDTO(Long id, String title, String description, int quantity, long price, AccountDTO creator, List<String> pictures, List<TagDTO> listTags, int damage) {
+    public ResponseArmorDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDto creator, List<String> pictures, List<TagDTO> listTags, int resistance) {
         super(id, title, description, quantity, price, creator, pictures, listTags);
-        this.damage = damage;
+        this.resistance = resistance;
 
     }
 
-    public int getDamage() {
-        return damage;
+    public int getResistance() {
+        return resistance;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public void setResistance(int resistance) {
+        this.resistance = resistance;
     }
 }

@@ -17,8 +17,8 @@ import java.util.List;
 
 @Controller
 @CrossOrigin(value = "*")
-@RequestMapping("/api/auth/products/weapons")
-public class WeaponController {
+@RequestMapping("/api/auth/products/usables")
+public class UsableController {
 
     @Autowired
     ProductRepository productRepository;
@@ -31,12 +31,12 @@ public class WeaponController {
 
     @GetMapping()
     public ResponseEntity<?> fetchAll() {
-        List<ResponseWeaponDTO> response = new ArrayList<>();
+        List<ResponseUsableDTO> response = new ArrayList<>();
 
         this.productRepository.findAll().forEach(
                 product -> {
-                    if (product instanceof Weapon){
-                        ResponseWeaponDTO prodDto = getWeaponsDto(product);
+                    if (product instanceof Usable){
+                        ResponseUsableDTO prodDto = getUsablesDTO(product);
                         response.add(prodDto);
                     }
                 }
@@ -50,8 +50,8 @@ public class WeaponController {
     @GetMapping("/{id}")
     public ResponseEntity<?> fetchOneById(@PathVariable("id") Long idProd) {
 
-        Weapon weapon = (Weapon) this.productRepository.findById(idProd).orElseThrow(() -> new UsernameNotFoundException("Product Weapon not found"));
-        ResponseWeaponDTO dto = fetchWeaponDto(weapon);
+        Usable usable = (Usable) this.productRepository.findById(idProd).orElseThrow(() -> new UsernameNotFoundException("Product Usable not found"));
+        ResponseUsableDTO dto = fetchUsableDto(usable);
 
         return ResponseEntity
                 .ok()
@@ -59,110 +59,88 @@ public class WeaponController {
     }
 
     @PostMapping()
-    public ResponseEntity<?> create(@RequestBody CreateUpdateWeaponDTO dto ){
+    public ResponseEntity<?> create(@RequestBody CreateUpdateUsableDTO dto ){
 
-        Weapon newWeapon = new Weapon();
+        Usable newUsable = new Usable();
 
-        newWeapon.setTitle(dto.getTitle());
-        newWeapon.setDescription(dto.getDescription());
-        newWeapon.setQuantity(dto.getQuantity());
-        newWeapon.setPrice(dto.getPrice());
-        newWeapon.setPictures(dto.getPictures());
-        newWeapon.setDamage(dto.getDamage());
+        newUsable.setTitle(dto.getTitle());
+        newUsable.setDescription(dto.getDescription());
+        newUsable.setQuantity(dto.getQuantity());
+        newUsable.setPrice(dto.getPrice());
+        newUsable.setPictures(dto.getPictures());
+        newUsable.setDurability(dto.getDurability());
 
         Account creator = accountRepository.findById(dto.getCreator()).orElseThrow(() -> new UsernameNotFoundException("Creator not found"));
-        newWeapon.setCreator(creator);
+        newUsable.setCreator(creator);
 
         Iterable<Tag> tags = tagRepository.findAllById(dto.getListTags());
-        newWeapon.setListTags( (List) tags);
 
-        this.productRepository.save(newWeapon);
+        newUsable.setListTags( (List) tags);
+
+        this.productRepository.save(newUsable);
 
         return fetchAll();
     }
 
     @PutMapping()
-    public ResponseEntity<?> update(@RequestBody CreateUpdateWeaponDTO dto){
+    public ResponseEntity<?> update(@RequestBody CreateUpdateUsableDTO dto){
 
-        Weapon updateWeapon = (Weapon) this.productRepository.findById(dto.getId()).orElseThrow(() -> new UsernameNotFoundException("Product Weapon not found"));
+        Usable updateUsable = (Usable) this.productRepository.findById(dto.getId()).orElseThrow(() -> new UsernameNotFoundException("Product Usable not found"));
 
 //        updateUsable.setId(dto.getId());
-        updateWeapon.setTitle(dto.getTitle());
-        updateWeapon.setDescription(dto.getDescription());
-        updateWeapon.setQuantity(dto.getQuantity());
-        updateWeapon.setPrice(dto.getPrice());
-        updateWeapon.setPictures(dto.getPictures());
-        updateWeapon.setDamage(dto.getDamage());
+        updateUsable.setTitle(dto.getTitle());
+        updateUsable.setDescription(dto.getDescription());
+        updateUsable.setQuantity(dto.getQuantity());
+        updateUsable.setPrice(dto.getPrice());
+        updateUsable.setPictures(dto.getPictures());
+        updateUsable.setDurability(dto.getDurability());
 
         Account creator = accountRepository.findById(dto.getCreator()).orElseThrow(() -> new UsernameNotFoundException("Creator not found"));
-        updateWeapon.setCreator(creator);
+        updateUsable.setCreator(creator);
 
         Iterable<Tag> tags = tagRepository.findAllById(dto.getListTags());
 
-        updateWeapon.setListTags( (List) tags);
+        updateUsable.setListTags( (List) tags);
 
-        this.productRepository.save(updateWeapon);
+        this.productRepository.save(updateUsable);
 
-        return fetchOneById(updateWeapon.getId());
+        return fetchOneById(updateUsable.getId());
 //        return ResponseEntity
 //                .ok()
-//                .body("Produit weapon : ' " + updateWeapon.getTitle()+ " ' à été update");
+//                .body("Produit usable : ' " + updateUsable.getTitle()+ " ' à été update");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Long idWeapon){
+    public ResponseEntity<?> delete(@PathVariable("id") Long idUsable){
 
-        Weapon deleteWe = (Weapon) this.productRepository.findById(idWeapon).orElseThrow(() -> new UsernameNotFoundException("Product Weapon not found"));
+        Usable deleteUs = (Usable) this.productRepository.findById(idUsable).orElseThrow(() -> new UsernameNotFoundException("Product Usable not found"));
 
         //supprime du panier
         this.accountRepository.findAll().forEach(
                 account -> {
-                    account.removeProduct(deleteWe);
+                    account.removeProduct(deleteUs);
                 }
         );
         //vide la list Tag
-        deleteWe.setListTags(new ArrayList<>());
-        this.productRepository.save(deleteWe);
+        deleteUs.setListTags(new ArrayList<>());
+        this.productRepository.save(deleteUs);
 
-        this.productRepository.deleteById(idWeapon);
+        this.productRepository.deleteById(idUsable);
 
         return ResponseEntity
                 .ok()
-                .body("Produit Weapon: " + deleteWe.getTitle() + ", à été supprimé");
+                .body("Produit Usable: " + deleteUs.getTitle() + ", à été supprimé");
     }
 
-
-    public ResponseWeaponDTO fetchWeaponDto(Weapon weapon){
-        ResponseWeaponDTO dto = new ResponseWeaponDTO();
-
-        dto.setId(weapon.getId());
-        dto.setTitle(weapon.getTitle());
-        dto.setDescription(weapon.getDescription());
-        dto.setQuantity(weapon.getQuantity());
-        dto.setPrice(weapon.getPrice());
-        dto.setPictures(weapon.getPictures());
-        dto.setDamage(weapon.getDamage());
-
-        List<TagDTO> tags = new ArrayList<>();
-        weapon.getListTags().forEach(
-                t -> tags.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
-        );
-        dto.setListTags(tags);
-
-        dto.setCreator(fetchAccountDto(weapon.getCreator()));
-
-        return dto;
-    }
-
-    public ResponseWeaponDTO getWeaponsDto(Product product){
-        ResponseWeaponDTO prodDto = new ResponseWeaponDTO(
+    public ResponseUsableDTO getUsablesDTO(Product product){
+        ResponseUsableDTO prodDto = new ResponseUsableDTO(
                 product.getId(),
                 product.getTitle(),
                 product.getDescription(),
                 product.getQuantity(),
                 product.getPrice(),
                 product.getPictures(),
-                ((Weapon) product).getDamage()
+                ((Usable) product).getDurability()
         );
 
         //SET TAG PRODUCT
@@ -196,6 +174,28 @@ public class WeaponController {
         return prodDto;
     }
 
+    public ResponseUsableDTO fetchUsableDto(Usable usable){
+        ResponseUsableDTO dto = new ResponseUsableDTO();
+
+        dto.setId(usable.getId());
+        dto.setTitle(usable.getTitle());
+        dto.setDescription(usable.getDescription());
+        dto.setQuantity(usable.getQuantity());
+        dto.setPrice(usable.getPrice());
+        dto.setPictures(usable.getPictures());
+        dto.setDurability(usable.getDurability());
+
+        List<TagDTO> tags = new ArrayList<>();
+        usable.getListTags().forEach(
+                t -> tags.add(new TagDTO(t.getId(),t.getName(),t.getDescription()))
+        );
+        dto.setListTags(tags);
+
+        dto.setCreator(fetchAccountDto(usable.getCreator()));
+
+        return dto;
+    }
+
     public ResponseAccountProductDto fetchAccountDto(Account account){
         ResponseAccountProductDto dto = new ResponseAccountProductDto();
         dto.setId(account.getId());
@@ -217,5 +217,4 @@ public class WeaponController {
 
         return dto;
     }
-
 }

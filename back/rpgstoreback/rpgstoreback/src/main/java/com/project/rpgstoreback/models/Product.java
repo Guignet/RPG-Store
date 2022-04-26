@@ -29,6 +29,7 @@ public abstract class Product {
     @NotEmpty(message = "Il faut au moins une image")
     private List<String> pictures;
 
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL) //, mappedBy = "listProducts"
     @JoinTable(
             name = "tag_associate",
@@ -36,6 +37,8 @@ public abstract class Product {
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
     private List<Tag> listTags;
+
+
 
     public Product(){}
 
@@ -105,11 +108,11 @@ public abstract class Product {
         this.pictures = pictures;
     }
 
-//    public List<Tag> getListTags() {
-//        return listTags;
-//    }
-//
-//    public void setListTags(List<Tag> listTags) {
-//        this.listTags = listTags;
-//    }
+    public List<Tag> getListTags() {
+        return listTags;
+    }
+
+    public void setListTags(List<Tag> listTags) {
+        this.listTags = listTags;
+    }
 }

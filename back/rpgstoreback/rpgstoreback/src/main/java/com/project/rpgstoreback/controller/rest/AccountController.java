@@ -12,13 +12,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @CrossOrigin(value = "*")
-@RequestMapping("/api/auth/account")
+@RequestMapping("/api/auth/accounts")
 public class AccountController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class AccountController {
     @Autowired
     PasswordEncoder encoder;
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<?> fetchAll() {
         List<ResponseAccountDTO> response = new ArrayList<>();
 
@@ -100,7 +101,6 @@ public class AccountController {
                 .body(response);
     }
 
-
     @GetMapping("/{id}")
     public ResponseEntity<?> fetchOneById(@PathVariable("id") Long idAccount) {
         Account account = this.accountRepository.findById(idAccount).orElseThrow(() -> new UsernameNotFoundException("Account not found"));
@@ -112,7 +112,7 @@ public class AccountController {
                 .body(dto);
     }
 
-    @PostMapping("/new")
+    @PostMapping()
     public ResponseEntity<?> create(@RequestBody AccountDTO dto ){
 
         Account newAccount = new Account();
@@ -132,7 +132,7 @@ public class AccountController {
         return fetchAll();
     }
 
-    @PutMapping("/update")
+    @PutMapping()
     public ResponseEntity<?> update(@RequestBody AccountDTO dto) {
 
        Account updateAc = this.accountRepository.findById(dto.getId()).orElseThrow(() -> new UsernameNotFoundException("Account not found"));
@@ -161,13 +161,17 @@ public class AccountController {
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long idAccount){
 
-        String deleteAc = this.accountRepository.findById(idAccount).get().getUsername();
+        Account deleteAc = this.accountRepository.findById(idAccount).orElseThrow(() -> new UsernameNotFoundException("Account not found"));
+
+        //vide List Prod/son panier avant suppr
+        deleteAc.setListProducts(new ArrayList<>());
+        this.accountRepository.save(deleteAc);
 
         this.accountRepository.deleteById(idAccount);
 
         return ResponseEntity
                 .ok()
-                .body("Compte de ' " + deleteAc + " ' à été supprimé");
+                .body("Compte de: " + deleteAc.getUsername() + ", à été supprimé");
     }
 
 
@@ -230,7 +234,7 @@ public class AccountController {
                 );
 
 
-        AccountDTO creator = new AccountDTO(
+        ResponseAccountProductDto creator = new ResponseAccountProductDto(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -272,7 +276,7 @@ public class AccountController {
                 );
 
 
-        AccountDTO creator = new AccountDTO(
+        ResponseAccountProductDto creator = new ResponseAccountProductDto(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),
@@ -314,7 +318,7 @@ public class AccountController {
                 );
 
 
-        AccountDTO creator = new AccountDTO(
+        ResponseAccountProductDto creator = new ResponseAccountProductDto(
                 product.getCreator().getId(),
                 product.getCreator().getFirstName(),
                 product.getCreator().getLastName(),

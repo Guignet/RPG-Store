@@ -1,29 +1,22 @@
 package com.project.rpgstoreback.controller.rest.modelDTO;
 
-import com.project.rpgstoreback.models.Account;
-import com.project.rpgstoreback.models.Tag;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ResponseProductDTO {
-
+public class CreateUpdateArmorDTO {
     private Long id;
     private String title;
     private String description;
     private int quantity;
     private long price;
-    private ResponseAccountProductDto creator;
-    private List<String> pictures;
-    private List<TagDTO> listTags;
+    private Long creator; //seller ou admin
+    private List<String> pictures = new ArrayList<>();
+    private List<Long> listTags = new ArrayList<>(); //id des Tags
+    private int resistance;
 
-    public ResponseProductDTO() {
-    }
+    public CreateUpdateArmorDTO(){}
 
-    public ResponseProductDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDto creator, List<String> pictures, List<TagDTO> listTags) {
+    public CreateUpdateArmorDTO(Long id, String title, String description, int quantity, long price, Long creator, List<String> pictures, List<Long> listTags, int resistance) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -32,17 +25,7 @@ public abstract class ResponseProductDTO {
         this.creator = creator;
         this.pictures = pictures;
         this.listTags = listTags;
-    }
-
-    public ResponseProductDTO(Long id, String title, String description, int quantity, long price, List<String> pictures) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.quantity = quantity;
-        this.price = price;
-//        this.creator = creator;
-        this.pictures = pictures;
-//        this.listTags = listTags;
+        this.resistance = resistance;
     }
 
     public Long getId() {
@@ -85,11 +68,11 @@ public abstract class ResponseProductDTO {
         this.price = price;
     }
 
-    public ResponseAccountProductDto getCreator() {
+    public Long getCreator() {
         return creator;
     }
 
-    public void setCreator(ResponseAccountProductDto creator) {
+    public void setCreator(Long creator) {
         this.creator = creator;
     }
 
@@ -101,12 +84,19 @@ public abstract class ResponseProductDTO {
         this.pictures = pictures;
     }
 
-    public List<TagDTO> getListTags() {
+    public List<Long> getListTags() {
         return listTags;
     }
 
-    public void setListTags(List<TagDTO> listTags) {
+    public void setListTags(List<Long> listTags) {
         this.listTags = listTags;
     }
 
+    public int getResistance() {
+        return resistance;
+    }
+
+    public void setResistance(int resistance) {
+        this.resistance = resistance;
+    }
 }

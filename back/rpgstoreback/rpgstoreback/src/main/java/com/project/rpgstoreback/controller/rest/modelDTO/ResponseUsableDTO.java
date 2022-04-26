@@ -2,29 +2,29 @@ package com.project.rpgstoreback.controller.rest.modelDTO;
 
 import java.util.List;
 
-public class ResponseArmorDTO extends ResponseProductDTO{
+public class ResponseUsableDTO extends ResponseProductDTO{
 
 
-    private int resistance;
+    private int durability;
 
-    public ResponseArmorDTO(){}
+    public ResponseUsableDTO(){}
 
-    public ResponseArmorDTO(Long id, String title, String description, int quantity, long price, List<String> pictures, int resistance) {
+    public ResponseUsableDTO(Long id, String title, String description, int quantity, long price, List<String> pictures, int durability) {
         super(id, title, description, quantity, price, pictures);
-        this.resistance = resistance;
+        this.durability = durability;
     }
 
-    public ResponseArmorDTO(Long id, String title, String description, int quantity, long price, AccountDTO creator, List<String> pictures, List<TagDTO> listTags, int resistance) {
+    public ResponseUsableDTO(Long id, String title, String description, int quantity, long price, ResponseAccountProductDto creator, List<String> pictures, List<TagDTO> listTags, int durability) {
         super(id, title, description, quantity, price, creator, pictures, listTags);
-        this.resistance = resistance;
+        this.durability = durability;
 
     }
 
-    public int getDamage() {
-        return resistance;
+    public int getDurability() {
+        return durability;
     }
 
-    public void setDamage(int damage) {
-        this.resistance = damage;
+    public void setDurability(int durability) {
+        this.durability = durability;
     }
 }
