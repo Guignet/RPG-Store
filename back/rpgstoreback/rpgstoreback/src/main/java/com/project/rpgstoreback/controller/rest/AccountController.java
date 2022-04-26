@@ -3,6 +3,7 @@ package com.project.rpgstoreback.controller.rest;
 import com.project.rpgstoreback.controller.rest.modelDTO.*;
 import com.project.rpgstoreback.models.*;
 import com.project.rpgstoreback.repository.AccountRepository;
+import com.project.rpgstoreback.repository.ProductRepository;
 import com.project.rpgstoreback.repository.RoleRepository;
 import com.project.rpgstoreback.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class AccountController {
     RoleRepository roleRepository;
 
     @Autowired
-    TagRepository tagRepository;
+    ProductRepository productRepository;
 
     @Autowired
     PasswordEncoder encoder;
@@ -165,8 +166,24 @@ public class AccountController {
         this.accountRepository.save(deleteAc);
 
 
-        //suppr porduct create
-
+        //suppr product create
+        this.productRepository.findAll().forEach(
+                product -> {
+                    if (product.getCreator().getId() == idAccount){
+                        //supprime du panier
+                        this.accountRepository.findAll().forEach(
+                                account -> {
+                                    account.removeProduct(product);
+                                }
+                        );
+                        // vide tag list
+                        product.setListTags(new ArrayList<>());
+                        this.productRepository.save(product);
+                        //supprime
+                        //this.productRepository.deleteById(product.getId());
+                    }
+                }
+        );
 
 
         this.accountRepository.deleteById(idAccount);
