@@ -27,7 +27,7 @@ export class FiltersComponent implements OnInit {
 
 
   rare(param: string) {
-    if (param.toLocaleLowerCase() == "all")
+    if (param.toLocaleLowerCase() == "")
       this.sort.rare = '';
     else if  (param.toLocaleLowerCase() == "common")
       this.sort.rare = 'common';
