@@ -12,6 +12,10 @@ export class SeeProductsComponent implements OnInit {
 
   sortByPriceValue: string = 'ASC';
 
+  sort = {
+    price: 'asc',
+    rare: ''
+  }
 
 
   listProducts: Product[] = [];
