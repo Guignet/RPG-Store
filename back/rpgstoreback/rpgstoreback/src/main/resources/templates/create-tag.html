@@ -19,7 +19,7 @@
         <form th:action="@{/auth/create-tag}"
               th:object="${tagForm}" method="POST">
             Nom:
-            <input type="text" th:field="*{name}" />
+            <input type="text" th:field="*{title}" />
             <br/>
             Description:
             <input type="text" th:field="*{description}" />
