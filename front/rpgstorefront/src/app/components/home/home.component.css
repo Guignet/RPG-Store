@@ -1,0 +1,46 @@
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 1em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+section {
+  background: white;
+}
+
+.container-txt-center {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.container-img img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+  /*object-position: 25% 50%;*/
+  object-position: top;
+}
+
+.card .container-img img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  /*object-position: 25% 50%;*/
+}
+
+
+.bloc {
+  width: 40%;
+  margin: 2%;
+}
+
+.bloc2 {
+  width: 60%;
+  margin: 2%;
+}
