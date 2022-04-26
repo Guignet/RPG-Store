@@ -1,28 +1,58 @@
 package com.project.rpgstoreback.models;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Account {
+public class Account implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank(message = "Prénom ne peut pas être vide")
     private String firstName;
+
+    @NotBlank(message = "Nom ne peut pas être vide")
     private String lastName;
+
+    @NotBlank(message = "Pseudo ne peut pas être vide")
+    @Column(unique = true)
     private String username;
+
+    @NotBlank(message = "Mot de passe ne peut pas être vide")
+    @Size(min = 4, message = "Mot de passe trop court")
     private String password;
+
+    @Column(unique = true)
+    @NotBlank(message = "Email ne peut pas être vide")
     private String email;
+
+    @NotNull//verif
     private LocalDate registrationDate;
+
     private boolean isActive;
 
-    @ManyToMany(fetch = FetchType.EAGER)//earger va cherche toute info de user + info des role associé
-    private List<Role> roleList;
+    @NotEmpty(message = "Le role ne peut pas être vide")
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roleList = new ArrayList<>();
 
-    //private List<Product> listProducts;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinTable(name="panierUser")
+    private List<Product> listProducts = new ArrayList<>(); // liste panier pour user
 
     public Account(){}
 
@@ -36,4 +66,124 @@ public class Account {
         this.isActive = isActive;
         this.roleList = roleList;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDate registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public List<Product> getListProducts() {
+        return listProducts;
+    }
+
+    public void setListProducts(List<Product> listProducts) {
+        this.listProducts = listProducts;
+    }
+
+    public void addProduct(Product product){
+        this.listProducts.add(product);
+    }
+
+    public void removeProduct(Product product){
+        this.listProducts.remove(product);
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roleList.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .collect(Collectors.toList());
+    }
+
+
+
+
+
 }

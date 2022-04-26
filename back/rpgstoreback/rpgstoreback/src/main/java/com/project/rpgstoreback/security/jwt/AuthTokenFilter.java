@@ -1,5 +1,7 @@
 package com.project.rpgstoreback.security.jwt;
 
+import com.project.rpgstoreback.models.Account;
+import com.project.rpgstoreback.service.AccountDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,9 +19,11 @@ import java.io.IOException;
 
 public class AuthTokenFilter extends OncePerRequestFilter {
     @Autowired
-    private UserDetailsService userDetailsService;
+    private AccountDetailsServiceImpl userDetailsService;
     @Autowired
     private JwtUtils jwtUtils;
+
+
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -29,7 +33,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
             String username = jwtUtils.getUsernameFromToken(tokenJwt);
 
-            User user = (User) userDetailsService.loadUserByUsername(username);
+            Account user = (Account) userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authentication);
