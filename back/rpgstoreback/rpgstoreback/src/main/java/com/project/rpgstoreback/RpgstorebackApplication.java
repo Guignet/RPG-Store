@@ -133,7 +133,25 @@ public class RpgstorebackApplication {
 				productRepository.save(sword);
 				productRepository.save(shield);
 				productRepository.save(ring);
-
+//				Partie pour le front
+				Account Hseller = new Account(
+						"hyruleSeller",
+						"hyruleSeller",
+						"Marchand d'Hyrule",
+						encoder.encode("seller"),
+						"hyruleseller@gmail.com",
+						LocalDate.now(),
+						true,
+						Arrays.asList(role3)
+				);
+				accountRepository.save(Hseller);
+				productRepository.save(new Usable("Coeur de vie","Permet de restorer sa vie au cours d'un combat.",100,10,Hseller,Arrays.asList("https://i.pinimg.com/originals/76/b5/73/76b573e3051fe6e7eacc6e870801216e.jpg"),Arrays.asList(legendaryTag),10));
+				productRepository.save(new Usable("1/4 de coeur","Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
+				productRepository.save(new Usable("Emeraude Kokiri","La pierre spirituelle de la forêt, également connue sous le nom d' 'Emeraude Kokiri', est un objet d'Ocarina of Time.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
+//				productRepository.save(new Usable("1/4 de coeur","Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
+//				productRepository.save(new Usable("1/4 de coeur","Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
+//				productRepository.save(new Usable("1/4 de coeur","Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
+//				productRepository.save(new Usable("1/4 de coeur","Si vous collectez 4 quarts de coeur, vous obtenez un coeur supplémentaire dans votre barre de vie.",100,25,Hseller,Arrays.asList("https://p.kindpng.com/picc/s/87-879375_ocarina-of-time-heart-pieces-hd-png-download.png"),Arrays.asList(legendaryTag),4));
 				user.addProduct(sword); // update via premier save (dans état manage)
 				user.addProduct(shield); // update via premier save (dans état manage)
 
